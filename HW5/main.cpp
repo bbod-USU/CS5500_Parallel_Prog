@@ -6,8 +6,7 @@
 #include <ctime>
 #define MCW MPI_COMM_WORLD
 using namespace std; 
-int main(int argc, char **argv){
-    int rank, size;
+int main(int argc, char **argv){ int rank, size;
     int data;
     int dest;
     int N = 6;
@@ -52,8 +51,7 @@ int main(int argc, char **argv){
 
 
     do{
-        //Give everyone the current state of 2d  array.
-//        MPI_Bcast (&&world, N, MPI_INT, 0, MCW);
+        //MPI_Bcast (*world, N, MPI_INT, 0, MCW);
 
         int from = rank * N/size;
         int to = ((rank+1) * N/size);
@@ -63,7 +61,7 @@ int main(int argc, char **argv){
             // Scatter the random numbers to all processes
             MPI_Scatter (worldData, N/size, MPI_INT, C, N/size, MPI_INT, 0, MCW);
             for(int j = from; j < to; j++){
-//                cout << "From " << from<<" TO: " << to  <<" process: " << rank <<" j: " << j << " i: " << i<< endl;
+                cout << "From " << from<<" TO: " << to  <<" process: " << rank <<" j: " << j << " i: " << i<< endl;
                 int neighbors = 0;
                 //Above 3 cells
                if(i - 1 >= 0)
@@ -102,6 +100,7 @@ int main(int argc, char **argv){
                     C[0]=world[i][j];
                 }
             }
+            MPI_Barrier(MCW);
             //Gather all of it back up.
             MPI_Gather (&C[0], N/size, MPI_INT, worldData, N/size, MPI_INT, 0, MCW);
             
