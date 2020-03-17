@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="BuildServerSettings">
     <option name="LOGIN" value="" />
     <option name="SERVER_URL" value="http://buildserver" />
@@ -37,8 +40,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2c8533ba-540f-4e3f-9945-3ca06f59f247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/main.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/main" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +72,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="inlay.hints.ObjectiveC" />
   </component>
   <component name="RunManager">
     <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="HW7" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="HW7" RUN_TARGET_NAME="main">
@@ -93,6 +94,7 @@
       <workItem from="1584397996277" duration="646000" />
       <workItem from="1584399419332" duration="1165000" />
       <workItem from="1584410030817" duration="3105000" />
+      <workItem from="1584418360198" duration="1236000" />
     </task>
     <servers />
   </component>
@@ -104,10 +106,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="648" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080/-1920.135.1920.1080/1920.97.1920.1080@0.0.1920.1080" timestamp="1584399404367" />
-    <state x="712" y="403" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1584418407417">
+    <state x="712" y="403" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1584419433375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="712" y="403" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080/-1920.135.1920.1080/1920.97.1920.1080@0.0.1920.1080" timestamp="1584418407417" />
+    <state x="712" y="403" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1080/-1920.135.1920.1080/1920.97.1920.1080@0.0.1920.1080" timestamp="1584419433375" />
     <state width="1878" height="357" key="GridCell.Tab.0.bottom" timestamp="1584417673541">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -144,10 +146,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="357" key="GridCell.Tab.1.right/0.0.1920.1080/-1920.135.1920.1080/1920.97.1920.1080@0.0.1920.1080" timestamp="1584417673543" />
-    <state x="469" y="179" key="SettingsEditor" timestamp="1584418565619">
+    <state x="469" y="179" key="SettingsEditor" timestamp="1584419373854">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="469" y="179" key="SettingsEditor/0.0.1920.1080/-1920.135.1920.1080/1920.97.1920.1080@0.0.1920.1080" timestamp="1584418565619" />
+    <state x="469" y="179" key="SettingsEditor/0.0.1920.1080/-1920.135.1920.1080/1920.97.1920.1080@0.0.1920.1080" timestamp="1584419373854" />
     <state x="469" y="179" key="SettingsEditor/0.0.1920.1080/-1920.158.1920.1057/1920.120.1920.1057@0.0.1920.1080" timestamp="1584418349102" />
     <state x="653" y="368" key="com.intellij.ide.util.TipDialog" timestamp="1584418360381">
       <screen x="0" y="0" width="1920" height="1080" />

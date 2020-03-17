@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include<queue>
+
 #define MCW MPI_COMM_WORLD
 #define GENERIC 0
 #define SPECIAL 1
@@ -29,53 +30,53 @@ int main(int argc, char **argv) {
     MPI_Comm_rank(MCW, &rank);
     MPI_Comm_size(MCW, &size);
 
-    srand(time(NULL)+rank);
+    srand(time(NULL) + rank);
     taskLimit = rand() % 1025 + 1024; //Set the limit to some number between 1024 and 2048
 
-    if(rank == 0) {
+    if (rank == 0) {
         hasToken = true;
         int job = rand() % 3 + 1;
         tasksCreated++;
         MPI_Send(&job, 1, MPI_INT, rand() % 4, JOB, MCW); //Send out the initial job
     }
 
-    while(true) {
+    while (true) {
         MPI_Iprobe(MPI_ANY_SOURCE, JOB, MCW, &jobFlag, &status); //Check to see if a job is available
-        if(jobFlag) {
+        if (jobFlag) {
             MPI_Irecv(&newTask, 1, MPI_INT, MPI_ANY_SOURCE, JOB, MCW, &request);
             myTasks.push(newTask);
         }
-        if(newTask == -1) { //If the stop signal is received, send my info to process 0 and break out of the loop
-            MPI_Send(&tasksCreated, 1, MPI_INT, 0, size-1, MCW);
+        if (newTask == -1) { //If the stop signal is received, send my info to process 0 and break out of the loop
+            MPI_Send(&tasksCreated, 1, MPI_INT, 0, size - 1, MCW);
             MPI_Send(&tasksCompleted, 1, MPI_INT, 0, size, MCW);
             break;
         }
-        if(myTasks.size() > 16) { //If my task queue is greater than size 16, send off 2 tasks
-            for(int i = 0; i < 2; i++) {
+        if (myTasks.size() > 16) { //If my task queue is greater than size 16, send off 2 tasks
+            for (int i = 0; i < 2; i++) {
                 int task = myTasks.front();
                 myTasks.pop();
                 int dest = rand() % 4;
-                while(dest == rank) {dest = rand() % size;}
-                if(dest < rank) { myToken = GENERIC;}
+                while (dest == rank) { dest = rand() % size; }
+                if (dest < rank) { myToken = GENERIC; }
                 MPI_Send(&task, 1, MPI_INT, dest, JOB, MCW);
             }
         }
-        if(!myTasks.empty()) {
+        if (!myTasks.empty()) {
             int num = myTasks.front();
             myTasks.pop();
-            num^3-num^4;
+            num ^ 3 - num ^ 4;
             tasksCompleted++;
         }
-        if(tasksCreated < taskLimit) {
-            for(int i = 0; i < rand() % size; i++) {
+        if (tasksCreated < taskLimit) {
+            for (int i = 0; i < rand() % size; i++) {
                 myTasks.push(rand() % size);
                 tasksCreated++;
             }
         }
-        if(myTasks.empty()) { //Check the token information
-            if(hasToken) {
-                string tmp =  "";
-                if(tokenValue == GENERIC)
+        if (myTasks.empty()) { //Check the token information
+            if (hasToken) {
+                string tmp = "";
+                if (tokenValue == GENERIC)
                     tmp = "Generic";
                 else
                     tmp = "Special";
@@ -83,25 +84,28 @@ int main(int argc, char **argv) {
 
                 cout << "My Rank: " << rank << "     My token: " << tmp << endl;
                 int dest = rank + 1 < size ? rank + 1 : 0;
-                if(rank == 0) { tokenValue = SPECIAL;}
+                if (rank == 0) { tokenValue = SPECIAL; }
                 MPI_Send(&tokenValue, 1, MPI_INT, dest, TOKEN, MCW);
                 hasToken = false;
                 myToken = SPECIAL;
-            }
-            else {
-                int src = rank - 1 >= 0 ? rank - 1 : size - 1;
+            } else {
+                int src = 0;
+                if(rank - 1 >= 0)
+                    src = rank - 1;
+                else
+                    src = size - 1;
                 MPI_Iprobe(src, TOKEN, MCW, &tokenFlag, &status);
-                if(tokenFlag) {
+                if (tokenFlag) {
                     MPI_Irecv(&tokenValue, 1, MPI_INT, src, TOKEN, MCW, &request);
                     hasToken = true;
-                    if(rank == 0 && tokenValue == SPECIAL) {
-                        int globalStop = -1;
-                        for(int i = 1; i < size; i++) {
-                            MPI_Send(&globalStop, 1, MPI_INT, i, JOB, MCW);
+                    if (rank == 0 && tokenValue == SPECIAL) {
+                        int Stop = -1;
+                        for (int i = 1; i < size; i++) {
+                            MPI_Send(&Stop, 1, MPI_INT, i, JOB, MCW);
                         }
                         break;
                     }
-                    if(myToken == GENERIC) {
+                    if (myToken == GENERIC) {
                         tokenValue = GENERIC;
                     }
                 }
@@ -109,19 +113,19 @@ int main(int argc, char **argv) {
         }
     }
 //Print info after run.
-    if(rank == 0) {
+    if (rank == 0) {
         int created;
         int completed;
-        cout<<"Rank 0 created "<<tasksCreated<<" tasks and completed "<<tasksCompleted<<" tasks"<<endl;
-        for(int i = 0; i < size; i++) {
-            MPI_Recv(&created, 1, MPI_INT, i, size -1, MCW, MPI_STATUS_IGNORE);
+        cout << "Rank 0 created " << tasksCreated << " tasks and completed " << tasksCompleted << " tasks" << endl;
+        for (int i = 0; i < size; i++) {
+            MPI_Recv(&created, 1, MPI_INT, i, size - 1, MCW, MPI_STATUS_IGNORE);
             MPI_Recv(&completed, 1, MPI_INT, i, size, MCW, MPI_STATUS_IGNORE);
-            cout<<"Rank "<<i<<" created "<<created<<" tasks and completed "<<completed<<" tasks"<<endl;
+            cout << "Rank " << i << " created " << created << " tasks and completed " << completed << " tasks" << endl;
             tasksCreated += created;
             tasksCompleted += completed;
         }
-        cout<<"Tasks Created: "<<tasksCreated<<endl;
-        cout<<"Tasks Completed: "<<tasksCompleted<<endl;
+        cout << "Tasks Created: " << tasksCreated << endl;
+        cout << "Tasks Completed: " << tasksCompleted << endl;
     }
 
 
