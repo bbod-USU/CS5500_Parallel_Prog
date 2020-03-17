@@ -6,9 +6,11 @@
 #include <ctime>
 #define MCW MPI_COMM_WORLD
 using namespace std;
-int main(int argc, char **argv){ int rank, size;
+int main(int argc, char **argv){
+  int rank, size;
   int N = 6;
-  MPI_Init(&argc, &argv); MPI_Comm_rank(MCW, &rank);
+  MPI_Init(&argc, &argv);
+  MPI_Comm_rank(MCW, &rank);
   MPI_Comm_size(MCW, &size);
 
   int* C=(int*)malloc(sizeof(int) *(N/size));
@@ -37,11 +39,8 @@ int main(int argc, char **argv){ int rank, size;
         }else{
           world[i][j] = 0;
         }
-        cout << world[i][j] << " ";
       }
-      cout << endl;
     }
-    cout << endl << endl;
     finished = false;
   }
   MPI_Barrier(MCW);
@@ -51,24 +50,16 @@ int main(int argc, char **argv){ int rank, size;
   do{
     MPI_Bcast (world, N*N, MPI_INT, 0, MCW);
 
-    int from = rank * N/size;
-    int to = ((rank+1) * N/size);
-
     //Do Computations.
     for(int i = 0; i < N; i++){
       // Scatter the random numbers to all processes
-      cout << "ABOVE SCATTER" << endl;
-      MPI_Scatter (rank == 0 ? &(world[0][0]) : NULL, to-from, MPI_INT, C, to-from, MPI_INT, 0, MCW);
-      cout << "Rank: " << rank << endl;
-      for(int i = 0; i < N/size; i++){
-        cout << C[i] << " ";
-      }cout << endl;
+      MPI_Scatter (&world[i], 1, MPI_INT, C, 1, MPI_INT, 0, MCW);
 
+      int from = rank * N/size;
+      int to = ((rank+1) * N/size);
 
       for(int j = from, k = 0; j < to; j++, k++){
-        cout << "MADE IT BACK TO THE TOP!!!!!!!!!!!!!!" << endl;
-        cout << "K: " << k << endl << endl;
-//        cout << "From " << from<<" TO: " << to  <<" process: " << rank <<" j: " << j << " i: " << i<< endl;
+        cout << "From " << from<<" TO: " << to  <<" process: " << rank <<" j: " << j << " i: " << i<< endl;
         int neighbors = 0;
         //Above 3 cells
         if(i - 1 >= 0) {
@@ -99,9 +90,8 @@ int main(int argc, char **argv){ int rank, size;
         if(j - 1 >= 0)
           if(world[i][j-1]==1)
             neighbors++;
-        //If neighbors are to many or few i die.
 
-        ///We Are Segfaulting here because C is only size N/size not j*size/rank
+        //If neighbors are to many or few i die.
         //cout << "k: " << k << " C[k]: " << C[k] << " World[i][j] " << world[i][j] <<  " rank: " << rank <<endl;
         if(neighbors > 3 || neighbors <2)
           C[k]=0;
@@ -112,10 +102,8 @@ int main(int argc, char **argv){ int rank, size;
           C[k]=world[i][j];
         }
       }
-      //cout << "ABOVE BARRIER" << endl;
       MPI_Barrier(MCW);
       //Gather all of it back up.
-      cout << "above gather !!!!!!!!!!!!!!!" << endl;
       MPI_Gather (&C[0], N/size, MPI_INT, &world[i][0], N/size, MPI_INT, 0, MCW);
 
 
@@ -123,11 +111,8 @@ int main(int argc, char **argv){ int rank, size;
     if(rank == 0){
       for(int x = 0; x < N; x++){
         for( int y = 0; y < N; y++){
-          cout << world[x][y] << " ";
         }
-        cout << endl;
       }
-      cout << endl << endl << endl;
       finished = true;
       for( int i = 0; i<N*N; i++){
         if(worldData[i]!=0)

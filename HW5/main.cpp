@@ -59,7 +59,7 @@ int main(int argc, char **argv){ int rank, size;
         //Do Computations.
         for(int i = 0; i < N; i++){
             // Scatter the random numbers to all processes
-            MPI_Scatter (worldData, N/size, MPI_INT, C, N/size, MPI_INT, 0, MCW);
+            MPI_Scatter (worldData, 1, MPI_INT, C, 1, MPI_INT, 0, MCW);
             for(int j = from; j < to; j++){
                 cout << "From " << from<<" TO: " << to  <<" process: " << rank <<" j: " << j << " i: " << i<< endl;
                 int neighbors = 0;
