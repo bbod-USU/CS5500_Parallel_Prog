@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
             }
         }
     }
-
+    MPI_Finalize();
 //    //Make permutations
 //    auto perms = MakePermutationMatrix::GetLowestCost(cities, rank, size, matrix);
 return 0;
