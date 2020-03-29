@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
             matrix[i].resize(citiesSize);
         }
     }
-    MPI_Bcast(&matrix[0][0], citiesSize*citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    //MPI_Bcast(&matrix[0][0], citiesSize*citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
     if(rank){
         for(int i = 0; i < citiesSize; i++){
