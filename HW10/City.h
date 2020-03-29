@@ -14,8 +14,14 @@ public:
   int GetX(){ return X; }
   int GetY(){ return Y; }
   int GetName(){ return Name; }
-  bool operator< (const City &other) const {
-    return Name < other.Name;
+  bool operator < (const City &other) const {
+    return this->Name < other.Name;
+  }
+  bool operator > (const City &other) const {
+        return this->Name > other.Name;
+  }
+  bool operator == (const City &other) const{
+      return this->Name == other.Name;
   }
 };
 
