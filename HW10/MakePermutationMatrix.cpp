@@ -4,8 +4,7 @@
 
 #include "MakePermutationMatrix.h"
 
-std::vector<std::vector<City>> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size)
-{
+std::vector<std::vector<City>> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size){
     std::vector<std::vector<City>> permutations;
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
@@ -28,4 +27,8 @@ std::vector<std::vector<City>> MakePermutationMatrix::MakePermutation(std::vecto
         permutations.push_back(currentPerm);
     } while (std::next_permutation(myPerm.begin(), myPerm.end()), myPerm != nextPerm);
     return permutations;
+}
+
+std::vector<std::vector<City>> MakePermutationMatrix::GetLowestCost(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
+
 }

@@ -6,10 +6,15 @@
 #define HW10_MAKEPERMUTATIONMATRIX_H
 
 #include "City.h"
+
 #include <vector>
-class MakePermutationMatrix {
-public:
-  static std::vector<std::vector<City>> MakePermutation(std::vector<City> source, int rank, int size);
+class MakePermutationMatrix
+{
+  public:
+    static std::vector<std::vector<City>> GetLowestCost(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix);
+
+  private:
+    static std::vector<std::vector<City>> MakePermutation(std::vector<City> source, int rank, int size);
 };
 
 #endif // HW10_MAKEPERMUTATIONMATRIX_H
