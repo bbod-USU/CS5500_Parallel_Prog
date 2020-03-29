@@ -60,54 +60,54 @@ include CMakeFiles/HW10.dir/flags.make
 CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o: CMakeFiles/HW10.dir/flags.make
 CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o: ../MakePermutationMatrix.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o -c /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.cpp
+	mpicxx  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o -c /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.cpp
 
 CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.cpp > CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.i
+	mpicxx $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.cpp > CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.i
 
 CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.cpp -o CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.s
+	mpicxx $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.cpp -o CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.s
 
 CMakeFiles/HW10.dir/ReadFromFile.cpp.o: CMakeFiles/HW10.dir/flags.make
 CMakeFiles/HW10.dir/ReadFromFile.cpp.o: ../ReadFromFile.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HW10.dir/ReadFromFile.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HW10.dir/ReadFromFile.cpp.o -c /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp
+	mpicxx  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HW10.dir/ReadFromFile.cpp.o -c /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp
 
 CMakeFiles/HW10.dir/ReadFromFile.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW10.dir/ReadFromFile.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp > CMakeFiles/HW10.dir/ReadFromFile.cpp.i
+	mpicxx $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp > CMakeFiles/HW10.dir/ReadFromFile.cpp.i
 
 CMakeFiles/HW10.dir/ReadFromFile.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW10.dir/ReadFromFile.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp -o CMakeFiles/HW10.dir/ReadFromFile.cpp.s
+	mpicxx $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp -o CMakeFiles/HW10.dir/ReadFromFile.cpp.s
 
 CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.o: CMakeFiles/HW10.dir/flags.make
 CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.o: ../CostMatrixGenerator.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.o -c /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.cpp
+	mpicxx  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.o -c /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.cpp
 
 CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.cpp > CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.i
+	mpicxx $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.cpp > CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.i
 
 CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.cpp -o CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.s
+	mpicxx $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.cpp -o CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.s
 
 CMakeFiles/HW10.dir/main.cpp.o: CMakeFiles/HW10.dir/flags.make
 CMakeFiles/HW10.dir/main.cpp.o: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HW10.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HW10.dir/main.cpp.o -c /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/main.cpp
+	mpicxx  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/HW10.dir/main.cpp.o -c /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/main.cpp
 
 CMakeFiles/HW10.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW10.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/main.cpp > CMakeFiles/HW10.dir/main.cpp.i
+	mpicxx $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/main.cpp > CMakeFiles/HW10.dir/main.cpp.i
 
 CMakeFiles/HW10.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW10.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/main.cpp -o CMakeFiles/HW10.dir/main.cpp.s
+	mpicxx $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/main.cpp -o CMakeFiles/HW10.dir/main.cpp.s
 
 # Object files for target HW10
 HW10_OBJECTS = \

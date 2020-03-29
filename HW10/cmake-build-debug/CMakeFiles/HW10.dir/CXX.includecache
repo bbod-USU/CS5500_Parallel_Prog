@@ -8,10 +8,6 @@
 
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
 
-/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.cpp
-CostMatrixGenerator.h
-/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.h
-
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.h
 City.h
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
@@ -19,22 +15,6 @@ cmath
 -
 vector
 -
-
-/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.cpp
-MakePermutationMatrix.h
-/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.h
-
-/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.h
-City.h
-/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
-vector
--
-
-/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp
-filesystem
--
-ReadFromFile.h
-/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.h
 
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.h
 City.h
