@@ -35,13 +35,15 @@ int main(int argc, char* argv[])
             matrix[i].resize(citiesSize);
         }
     }
-    MPI_Bcast(&(matrix[0][0]), citiesSize*citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-
+    for(int i = 0; i < citiesSize; i++) {
+        MPI_Bcast(&(matrix[0][i]), citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    }
     if(rank){
         std::cout << "Process "<< rank << " has value " << citiesSize << " as size of city" << std::endl;
-        for(int i = 0; i < citiesSize; i++){
-            for(int j = 0; j < citiesSize; j++) {
-                std::cout<<"Process " << rank << " has value " << matrix[i][j] << " at postion" << "(" << i << "," << j << ")" << std::endl;
+        for(int i = 0; i < citiesSize; i++) {
+            for (int j = 0; j < citiesSize; j++) {
+                std::cout << "Process " << rank << " has value " << matrix[i][j] << " at postion"
+                          << "(" << i << "," << j << ")" << std::endl;
             }
         }
     }
