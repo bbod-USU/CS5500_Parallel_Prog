@@ -5,6 +5,7 @@
 #include "MakePermutationMatrix.h"
 #include <algorithm>
 #include <mpi.h>
+#include <iostream>
 
 std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
     std::vector<double> returnVector;
@@ -35,7 +36,9 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     for(int i = 0; i < localCostVector.size(); i++) {
         if(localCostVector[i] < lowest[0])
             lowest[0] = localCostVector[i];
+            std::cout << lowest[0] << " ";
     }
+    std::cout<< std::endl;
     MPI_Gather(&localCostVector,1, MPI_DOUBLE, &returnVector,1, MPI_DOUBLE,0, MPI_COMM_WORLD);
 
     return returnVector;

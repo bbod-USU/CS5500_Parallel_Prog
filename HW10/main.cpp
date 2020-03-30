@@ -49,10 +49,10 @@ int main(int argc, char* argv[])
         costs = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
 
     }
-    if(!rank){
-        std::cout << costs.size() << std::endl;
-        std::cout << costs[0];
-    }
+//    if(!rank){
+//        std::cout << costs.size() << std::endl;
+//        std::cout << costs[0];
+//    }
 
     MPI_Finalize();
 
