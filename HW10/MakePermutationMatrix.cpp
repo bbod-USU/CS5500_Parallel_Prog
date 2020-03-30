@@ -3,6 +3,7 @@
 //
 
 #include "MakePermutationMatrix.h"
+#include "mpi.h"
 #include <algorithm>
 #include <iostream>
 
