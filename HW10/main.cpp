@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
     }
 
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    MPI_Bcast(cities.data(), cities.size()+1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Bcast(cities.data(), cities.size(), MPI_INT, 0, MPI_COMM_WORLD);
 
     std::vector<double> costs;
     if(rank){
