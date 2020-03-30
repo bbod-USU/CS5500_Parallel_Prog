@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
             }
             std::cout << std::endl;
         }
-        flatMatrix = matrixTools::FlattenMatrix(matrix, matrix.size(), matrix[0].size());
+        flatMatrix = matrixTools::FlattenMatrix(matrix);
         for(int i = 0; i < flatMatrix.size(); i++){
             std::cout << flatMatrix[i] << " ";
         }

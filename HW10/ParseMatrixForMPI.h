@@ -19,15 +19,19 @@ namespace matrixTools
     }
 
     template <typename T>
-    std::vector<T> FlattenMatrix(std::vector<std::vector<T>> matrix, int columnSize, int rowSize)
+    std::vector<T> FlattenMatrix(std::vector<std::vector<T>> matrix)
     {
-        std::vector<T> rVector((rowSize*columnSize), 0);
-        for (int i = 0; i < columnSize; i++) {
-            for (int j = 0; j < rowSize; j++) {
-                rVector[j*i] = matrix[i][j];
-            }
-        }
-        return rVector;
+        std::vector<T> ret;
+        for(const auto &v: matrix)
+            ret.insert(ret.end(), v.begin(), v.end());
+        return ret;
+//        std::vector<T> rVector((rowSize*columnSize), 0);
+//        for (int i = 0; i < columnSize; i++) {
+//            for (int j = 0; j < rowSize; j++) {
+//                rVector[j*i] = matrix[i][j];
+//            }
+//        }
+//        return rVector;
     }
 }
 #endif //HW10_PARSEMATRIXFORMPI_H
