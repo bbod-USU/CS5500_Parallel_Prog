@@ -13,7 +13,6 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
-    std::cout << "!!!!!!!!!!!!!! "<< myPerm.size() <<std::endl;
     auto offset = (myPerm.size()+1)/size;
 
     //return vector should be the size of number of processors as they are going to only return their own smallest.
@@ -38,11 +37,11 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
 //        std::cout << "rank " << rank << " source.size() " << source.size()  << std::endl;
 //        std::cout << "rank " << rank << " offset " << offset << std::endl;
 
-        for (int i = 1; i < myPerm.size(); i++) {
-            cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
-            std::cout << myPerm[i].GetName() << " ";
-        }
-        std::cout << std::endl;
+//        for (int i = 1; i < myPerm.size(); i++) {
+//            cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
+//            std::cout << myPerm[i].GetName() << " ";
+//        }
+//        std::cout << std::endl;
         //Push permutation cost to the localCostVector.
         localCostVector.push_back(cost);
     } while (std::next_permutation(myPerm.begin(), myPerm.end()) );
