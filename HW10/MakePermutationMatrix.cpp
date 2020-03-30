@@ -24,7 +24,11 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
 
     //rotate my perm.
     std::rotate(myPerm.begin(), myPerm.begin()+offset*rank,myPerm.end());
-
+    std::cout << "source: ";
+    for(int i = 0; i < source.size(); i++){
+        std::cout << source[i].GetName() << " ";
+    }
+    std::cout << std::endl;
     do {
         double cost;
         //Add up the cost of the current permutation.
