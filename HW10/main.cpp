@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
         matrix = CostMatrixGenerator::GenerateCostMatrix(cities);
     }
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
-    if(!rank){
+    if(rank){
         // reserve memory for vectors
         matrix.resize(citiesSize);
         for(int i = 0; i < citiesSize; i++) {
@@ -34,7 +34,6 @@ int main(int argc, char* argv[])
     std::cout << "Process "<< rank << " has value " << citiesSize << "as size of city" << std::endl;
 
     if(rank){
-        matrix[0][1]= 2.2;
         std::cout << "Process "<< rank << " has value " << citiesSize << "as size of city" << std::endl;
         for(int i = 0; i < citiesSize; i++){
             for(int j = 0; j < citiesSize; j++) {
