@@ -47,6 +47,9 @@ int main(int argc, char* argv[])
         costMatrix = matrixTools::UnflattenMatrix(flatMatrix, citiesSize, citiesSize);
             //Make permutations
             std::cout << "source size from main " << cities.size() << std::endl;
+            for(int i = 0; i < cities.size(); i++){
+                std::cout << cities[i].GetName() << " " << std::endl;
+            }
         costs = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
 
     }
