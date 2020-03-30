@@ -13,6 +13,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
+    std::cout << myPerm.size() <<std::endl;
     auto offset = (myPerm.size()+1)/size;
 
     //return vector should be the size of number of processors as they are going to only return their own smallest.
