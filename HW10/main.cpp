@@ -33,6 +33,7 @@ int main(int argc, char* argv[])
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
     if(rank){
         // reserve memory for vectors
+        flatMatrix.resize(citiesSize*citiesSize);
         matrix.resize(citiesSize);
         for(int i = 0; i < citiesSize; i++) {
             matrix[i].resize(citiesSize);
