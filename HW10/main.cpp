@@ -29,6 +29,10 @@ int main(int argc, char* argv[])
             std::cout << std::endl;
         }
         flatMatrix = matrixTools::FlattenMatrix(matrix);
+        for(int i = 0; i < flatMatrix.size(); i++){
+            std::cout << flatMatrix[i] << " ";
+        }
+        std::cout<<std::endl;
     }
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
     if(rank){

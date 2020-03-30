@@ -7,12 +7,12 @@
 namespace matrixTools
 {
     template <typename T>
-    std::vector<std::vector<T>> UnflattenMatrix(std::vector<T> origianlVector, int rowSize, int columnSize)
+    std::vector<std::vector<T>> UnflattenMatrix(std::vector<T> originalVector, int rowSize, int columnSize)
     {
         std::vector<std::vector<T>> matrix(columnSize, std::vector<T>(rowSize, 0));
         for (int i = 0; i < columnSize; i++) {
             for (int j = 0; j < rowSize; j++) {
-                matrix[i][j] = origianlVector[i + j];
+                matrix[i][j] = originalVector[i + j];
             }
         }
         return matrix;
