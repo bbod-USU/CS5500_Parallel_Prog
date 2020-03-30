@@ -46,9 +46,11 @@ int main(int argc, char* argv[])
         std::cout << std::endl;
         std::cout << "HERE RANK 1" << std::endl;
     }
+    std::cout << "Rank: " << rank << " IM HERE 1" << std::endl;
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    MPI_Bcast(serializedCity.data(), serializedCity.size(), MPI_INT, 0, MPI_COMM_WORLD);
     std::cout << "Rank: " << rank << " IM HERE 2" << std::endl;
+    MPI_Bcast(serializedCity.data(), serializedCity.size(), MPI_INT, 0, MPI_COMM_WORLD);
+    std::cout << "Rank: " << rank << " IM HERE 3" << std::endl;
 
     std::vector<double> costs;
     if(rank){
