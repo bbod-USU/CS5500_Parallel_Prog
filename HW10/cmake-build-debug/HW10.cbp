@@ -109,6 +109,9 @@
 		<Unit filename="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.h">
 			<Option target="HW10"/>
 		</Unit>
+		<Unit filename="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ParseMatrixForMPI.h">
+			<Option target="HW10"/>
+		</Unit>
 		<Unit filename="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp">
 			<Option target="HW10"/>
 		</Unit>

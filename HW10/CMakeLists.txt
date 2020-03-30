@@ -13,7 +13,7 @@ set(HEADER_FILES
 set(SOURCE_FILES
         MakePermutationMatrix.cpp
         ReadFromFile.cpp
-        CostMatrixGenerator.cpp CostMatrixGenerator.h)
+        CostMatrixGenerator.cpp CostMatrixGenerator.h ParseMatrixForMPI.h)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(HW10 ${HEADER_FILES} ${SOURCE_FILES} main.cpp)

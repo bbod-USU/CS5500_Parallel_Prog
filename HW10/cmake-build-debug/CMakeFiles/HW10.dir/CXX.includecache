@@ -8,11 +8,19 @@
 
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
 
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.cpp
+CostMatrixGenerator.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.h
+
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.h
 City.h
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
 cmath
 -
+vector
+-
+
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ParseMatrixForMPI.h
 vector
 -
 
@@ -35,6 +43,8 @@ CostMatrixGenerator.h
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.h
 ReadFromFile.h
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.h
+ParseMatrixForMPI.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ParseMatrixForMPI.h
 mpi.h
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/mpi.h
 iostream

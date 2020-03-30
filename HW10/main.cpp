@@ -1,7 +1,8 @@
-#import "CostMatrixGenerator.h"
+#include "CostMatrixGenerator.h"
 //#import "MakePermutationMatrix.h"
-#import "ReadFromFile.h"
-#import "mpi.h"
+#include "ReadFromFile.h"
+#include "ParseMatrixForMPI.h"
+#include "mpi.h"
 
 #include <iostream>
 #define MCW MPI_COMM_WORLD
@@ -14,6 +15,7 @@ int main(int argc, char* argv[])
     MPI_Comm_size(MCW, &size);
     std::vector<std::vector<double>> matrix;
     std::vector<City> cities;
+    std::vector<double> flatMatrix;
     if (rank == 0) {
         std::cout << "Reading in file" << std::endl;
         cities = ReadFromFile::ReadFile("../input");
@@ -26,6 +28,7 @@ int main(int argc, char* argv[])
             }
             std::cout << std::endl;
         }
+        flatMatrix = matrixTools::FlattenMatrix(matrix);
     }
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
     if(rank){
@@ -35,10 +38,9 @@ int main(int argc, char* argv[])
             matrix[i].resize(citiesSize);
         }
     }
-    for(int i = 0; i < citiesSize; i++) {
-        MPI_Bcast(&(matrix[0][i]), citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    }
+    MPI_Bcast(&flatMatrix, flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
     if(rank){
+        matrix = matrixTools::UnflattenMatrix(flatMatrix, citiesSize, citiesSize);
         std::cout << "Process "<< rank << " has value " << citiesSize << " as size of city" << std::endl;
         for(int i = 0; i < citiesSize; i++) {
             for (int j = 0; j < citiesSize; j++) {
