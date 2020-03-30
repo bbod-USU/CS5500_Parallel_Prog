@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
             matrix[i].resize(citiesSize);
         }
     }
-    MPI_Bcast(&flatMatrix, flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
     if(rank){
         std::cout <<"Flat Matrix Size :" << flatMatrix.size() << std::endl;
         for(int i = 0; i < citiesSize*citiesSize; i++){
