@@ -30,8 +30,8 @@ int main(int argc, char* argv[])
 //            std::cout << std::endl;
 //        }
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
- //       SerializeCities::Serialize(cities);
-        std::cout << "Here: ";
+        SerializeCities::Serialize(cities);
+        std::cout << cities.size() << " Here: ";
         for(int i = 0; i < cities.size(); i++){
             std::cout << cities[i].GetName() << " ";
         }
