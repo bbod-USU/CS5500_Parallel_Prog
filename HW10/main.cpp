@@ -4,7 +4,6 @@
 #include "ReadFromFile.h"
 #include "mpi.h"
 
-#include <iostream>
 #define MCW MPI_COMM_WORLD
 int main(int argc, char* argv[])
 {
@@ -22,12 +21,12 @@ int main(int argc, char* argv[])
         citiesSize = cities.size();
         //Make costMatrix
         costMatrix = CostMatrixGenerator::GenerateCostMatrix(cities);
-        for(int i =0; i < cities.size(); i++){
-            for(int j = 0; j< cities.size(); j++){
-                std::cout << costMatrix[i][j] << " ";
-            }
-            std::cout << std::endl;
-        }
+//        for(int i =0; i < cities.size(); i++){
+//            for(int j = 0; j< cities.size(); j++){
+//                std::cout << costMatrix[i][j] << " ";
+//            }
+//            std::cout << std::endl;
+//        }
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
     }
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);

@@ -14,24 +14,27 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
     auto offset = myPerm.size()/size;
-    if(!rank){
-        returnVector.resize(source.size(), 0);
-    }
-    if(rank)
-        std::rotate(nextPerm.begin(), nextPerm.begin()+offset*(rank+1), nextPerm.end());
-    else
-        nextPerm = source;
 
+    //return vector should be the size of number of processors as they are going to only return their own smallest.
     if(rank)
-        std::rotate(myPerm.begin(), myPerm.begin()+offset*rank,myPerm.end());
+        returnVector.resize(source.size(), 0);
+
+    //the "nextPerm" is the permutation to stop at.
+    std::rotate(nextPerm.begin(), nextPerm.begin()+offset*(rank+1), nextPerm.end());
+
+    //rotate my perm.
+    std::rotate(myPerm.begin(), myPerm.begin()+offset*rank,myPerm.end());
 
     do {
         double cost;
+        //Add up the cost of the current permutation.
         for (int i = 1; i < myPerm.size(); i++) {
             cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
         }
+        //Push permutation cost to the localCostVector.
         localCostVector.push_back(cost);
     } while (std::next_permutation(myPerm.begin(), myPerm.end()), myPerm != nextPerm);
+    //find the lowest and add it to a lowest vector.
     auto lowest = std::vector<double>(1,localCostVector[0]);
     for(int i = 0; i < localCostVector.size(); i++) {
         if(localCostVector[i] < lowest[0])
