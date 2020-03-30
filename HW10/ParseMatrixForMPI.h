@@ -19,11 +19,11 @@ namespace matrixTools
     }
 
     template <typename T>
-    std::vector<T> FlattenMatrix(std::vector<std::vector<T>> matrix)
+    std::vector<T> FlattenMatrix(std::vector<std::vector<T>> matrix, int columnSize, int rowSize)
     {
-        std::vector<T> rVector(matrix.size() * matrix[0].size(), 0);
-        for (int i = 0; i < matrix.size(); i++) {
-            for (int j = 0; j < matrix[0].size(); j++) {
+        std::vector<T> rVector((rowSize*columnSize), 0);
+        for (int i = 0; i < columnSize; i++) {
+            for (int j = 0; j < rowSize; j++) {
                 rVector[i + j] = matrix[i][j];
             }
         }
