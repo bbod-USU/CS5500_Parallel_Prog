@@ -50,6 +50,7 @@ int main(int argc, char* argv[])
 
     }
     if(!rank){
+        std::cout << costs.size() << std::endl;
         std::cout << costs[0];
     }
 
