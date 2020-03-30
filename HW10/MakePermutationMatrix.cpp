@@ -38,18 +38,14 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     do {
         double cost;
         //Add up the cost of the current permutation.
-//        std::cout << "rank " << rank << " myPerm.size() " << myPerm.size()  << std::endl;
-//        std::cout << "rank " << rank << " source.size() " << source.size()  << std::endl;
-//        std::cout << "rank " << rank << " offset " << offset << std::endl;
+        for (int i = 1; i < myPerm.size(); i++) {
+            cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
+        }
 
-//        for (int i = 1; i < myPerm.size(); i++) {
-//            cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
-//            std::cout << myPerm[i].GetName() << " ";
-//        }
-//        std::cout << std::endl;
+        std::cout << "cost: " << cost <<std::endl;
         //Push permutation cost to the localCostVector.
         localCostVector.push_back(cost);
-    } while (std::next_permutation(myPerm.begin(), myPerm.end()) );
+    } while (std::next_permutation(myPerm.begin(), myPerm.end()) && myPerm!=nextPerm );
 
 //    //find the lowest and add it to a lowest vector.
 //    auto lowest = std::vector<double>(1,localCostVector[0]);
