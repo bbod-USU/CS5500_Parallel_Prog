@@ -14,6 +14,7 @@ std::vector<City> ReadFromFile::ReadFile(const std::string& fileName)
         City city;
         city.SetCoordinates(x, y, name);
         cities.push_back(city);
+        std::cout << "name: " << name << std::endl;
         name++;
     }
     return cities;
