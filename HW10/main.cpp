@@ -18,6 +18,7 @@ int main(int argc, char* argv[])
         std::cout << "Reading in file" << std::endl;
         cities = ReadFromFile::ReadFile("../input");
         citiesSize = cities.size();
+        std::cout << "after set "<< rank << " has value " << citiesSize << "as size of city" << std::endl;
         //Make matrix
         matrix = CostMatrixGenerator::GenerateCostMatrix(cities);
     }
