@@ -24,7 +24,7 @@ namespace matrixTools
         std::vector<T> rVector((rowSize*columnSize), 0);
         for (int i = 0; i < columnSize; i++) {
             for (int j = 0; j < rowSize; j++) {
-                rVector[i + j] = matrix[i][j];
+                rVector[j*i] = matrix[i][j];
             }
         }
         return rVector;
