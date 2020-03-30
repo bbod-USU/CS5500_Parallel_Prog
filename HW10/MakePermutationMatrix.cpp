@@ -60,7 +60,8 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
 //            lowest[0] = localCostVector[i];
 //            std::cout << lowest[0] << " ";
 //    }
-    std::cout<< std::endl;
+
+    std::cout<< "Rank: "<< rank<< "cost count: "<< localCostVector.size() << std::endl;
     std::cout << "Rank: "<< rank <<" Last Perm: ";
     for(int i = 0; i < myPerm.size(); i++){
         std::cout << myPerm[i].GetName() << " ";
