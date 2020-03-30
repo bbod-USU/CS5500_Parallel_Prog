@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
     if(rank){
         costMatrix = matrixTools::UnflattenMatrix(flatMatrix, citiesSize, citiesSize);
             //Make permutations
-            std::cout << "source size from main " << cities.size();
+            std::cout << "source size from main " << cities.size() << std::endl;
         costs = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
 
     }
