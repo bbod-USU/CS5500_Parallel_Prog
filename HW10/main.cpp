@@ -20,6 +20,12 @@ int main(int argc, char* argv[])
         citiesSize = cities.size();
         //Make matrix
         matrix = CostMatrixGenerator::GenerateCostMatrix(cities);
+        for(int i =0; i < cities.size(); i++){
+            for(int j = 0; j< cities.size(); j++){
+                std::cout << matrix[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
     }
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
     if(rank){
