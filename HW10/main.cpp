@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
     if(rank){
         // reserve memory for vectors
         flatMatrix.resize(citiesSize*citiesSize);
-        cities.resize(citiesSize);
+        //cities.resize(citiesSize);
         costMatrix.resize(citiesSize);
         for(int i = 0; i < citiesSize; i++) {
             costMatrix[i].resize(citiesSize);
