@@ -41,11 +41,16 @@ int main(int argc, char* argv[])
         }
     }
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
+    std::vector<double> costs;
     if(rank){
         costMatrix = matrixTools::UnflattenMatrix(flatMatrix, citiesSize, citiesSize);
             //Make permutations
-        auto perms = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
+        costs = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
 
+    }
+    if(!rank){
+        std::cout << costs[0];
     }
 
     MPI_Finalize();
