@@ -61,6 +61,11 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
 //            std::cout << lowest[0] << " ";
 //    }
     std::cout<< std::endl;
+    std::cout << "Rank: "<< rank <<" Last Perm: ";
+    for(int i = 0; i < myPerm.size(); i++){
+        std::cout << myPerm[i].GetName() << " ";
+    }
+    std::cout << std::endl;
     MPI_Gather(&localCostVector,1, MPI_DOUBLE, &returnVector,1, MPI_DOUBLE,0, MPI_COMM_WORLD);
 
     return returnVector;
