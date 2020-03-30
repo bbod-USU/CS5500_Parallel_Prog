@@ -66,7 +66,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         std::cout << myPerm[i].GetName() << " ";
     }
     std::cout << std::endl;
-    MPI_Gather(&localCostVector,1, MPI_DOUBLE, &returnVector,1, MPI_DOUBLE,0, MPI_COMM_WORLD);
+    //MPI_Gather(&localCostVector,1, MPI_DOUBLE, &returnVector,1, MPI_DOUBLE,0, MPI_COMM_WORLD);
 
     return returnVector;
 }
