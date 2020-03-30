@@ -10,7 +10,7 @@ std::vector<std::vector<double>> CostMatrixGenerator::GenerateCostMatrix(std::ve
         for(int j = 0; j < cities.size(); j++){
             auto xDif = (cities[i].GetX()-cities[j].GetX());
             auto yDif = (cities[i].GetY()-cities[j].GetY());
-            matrix[i][j]= std::abs(std::sqrt( xDif^2 + yDif^2));
+            matrix[i][j]= std::abs(std::sqrt( (xDif*xDif) + (yDif*yDif)));
         }
     }
     return matrix;
