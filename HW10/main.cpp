@@ -30,10 +30,11 @@ int main(int argc, char* argv[])
             matrix[i].resize(citiesSize);
         }
     }
-    MPI_Bcast(&matrix[0][0], citiesSize*citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&(matrix[0][0]), citiesSize*citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
     std::cout << "Process "<< rank << " has value " << citiesSize << "as size of city" << std::endl;
 
     if(rank){
+        matrix[0][1]= 2.2;
         std::cout << "Process "<< rank << " has value " << citiesSize << "as size of city" << std::endl;
         for(int i = 0; i < citiesSize; i++){
             for(int j = 0; j < citiesSize; j++) {
