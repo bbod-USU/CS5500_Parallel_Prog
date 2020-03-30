@@ -4,7 +4,6 @@
 
 #include "MakePermutationMatrix.h"
 #include <algorithm>
-#include <mpi.h>
 #include <iostream>
 
 std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){

@@ -6,7 +6,7 @@
 #define HW10_MAKEPERMUTATIONMATRIX_H
 
 #include "City.h"
-
+#include "mpi.h"
 #include <vector>
 class MakePermutationMatrix
 {
