@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
             std::cout << cities[i].GetName() << " ";
         }
         std::cout << std::endl;
-
+        std::cout << "HERE RANK 1" << std::endl;
     }
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
     MPI_Bcast(&serializedCity[0], serializedCity.size(), MPI_INT, 0, MPI_COMM_WORLD);
