@@ -3,7 +3,7 @@
 //
 
 #include "MakePermutationMatrix.h"
-
+#include <algorithm>
 #include <mpi.h>
 
 std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
