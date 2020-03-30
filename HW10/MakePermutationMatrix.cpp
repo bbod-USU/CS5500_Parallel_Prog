@@ -39,7 +39,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         std::cout << std::endl;
         //Push permutation cost to the localCostVector.
         localCostVector.push_back(cost);
-    } while (std::next_permutation(myPerm.begin(), myPerm.end()), myPerm != nextPerm);
+    } while (std::next_permutation(myPerm.begin(), myPerm.end()) && myPerm != nextPerm);
 
     //find the lowest and add it to a lowest vector.
     auto lowest = std::vector<double>(1,localCostVector[0]);
