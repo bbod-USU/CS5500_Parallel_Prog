@@ -23,22 +23,18 @@ int main(int argc, char* argv[])
         citiesSize = cities.size();
         //Make costMatrix
         costMatrix = CostMatrixGenerator::GenerateCostMatrix(cities);
-//        for(int i =0; i < cities.size(); i++){
-//            for(int j = 0; j< cities.size(); j++){
-//                std::cout << costMatrix[i][j] << " ";
-//            }
-//            std::cout << std::endl;
-//        }
+
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
         SerializeCities::Serialize(cities);
-        std::cout << cities.size() << " Here: ";
-        for(int i = 0; i < cities.size(); i++){
-            std::cout << cities[i].GetName() << " ";
-        }
-        std::cout << std::endl;
+//        std::cout << cities.size() << " Here: ";
+//        for(int i = 0; i < cities.size(); i++){
+//            std::cout << cities[i].GetName() << " ";
+//        }
+//        std::cout << std::endl;
     }
 
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
     if(rank){
         // reserve memory for vectors
         flatMatrix.resize(citiesSize*citiesSize);
@@ -57,7 +53,7 @@ int main(int argc, char* argv[])
     }
 
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    MPI_Bcast(&serializedCity[0], citiesSize*3, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&serializedCity[0], serializedCity.size(), MPI_INT, 0, MPI_COMM_WORLD);
 
     std::vector<double> costs;
     if(rank){
