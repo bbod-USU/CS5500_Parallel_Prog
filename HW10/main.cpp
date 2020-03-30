@@ -43,12 +43,13 @@ int main(int argc, char* argv[])
         for(int i = 0; i < citiesSize; i++) {
             costMatrix[i].resize(citiesSize);
         }
+        std::cout << "Before B_cast: ";
+        for(int i = 0; i < cities.size(); i++){
+            std::cout << cities[i].GetName() << " ";
+        }
+        std::cout << std::endl;
     }
-    std::cout << "Before B_cast: ";
-    for(int i = 0; i < cities.size(); i++){
-        std::cout << cities[i].GetName() << " ";
-    }
-    std::cout << std::endl;
+
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
     MPI_Bcast(cities.data(), cities.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
