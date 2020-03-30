@@ -24,7 +24,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
 
     //rotate my perm.
     std::rotate(myPerm.begin(), myPerm.begin()+offset*rank,myPerm.end());
-    std::cout << "source.last(): " << source[source.size()-1].GetName() << std::endl;
+    std::cout << "source.last(): " << source[8].GetName() << std::endl;
     std::cout << "source: ";
     for(int i = 0; i < source.size(); i++){
         std::cout << source[i].GetName() << " ";
