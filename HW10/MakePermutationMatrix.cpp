@@ -36,7 +36,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     }
     std::cout << std::endl;
     do {
-        double cost;
+        double cost = 0;
         //Add up the cost of the current permutation.
         for (int i = 1; i < myPerm.size(); i++) {
             cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
