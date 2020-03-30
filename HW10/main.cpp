@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     std::vector<std::vector<double>> costMatrix;
     std::vector<City> cities;
     std::vector<double> flatMatrix;
-    std::vector<double> serializedCity;
+    std::vector<int> serializedCity;
     if (rank == 0) {
         std::cout << "Reading in file" << std::endl;
         cities = ReadFromFile::ReadFile("../input");
@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
     }
 
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    MPI_Bcast(&serializedCity[0], citiesSize*3, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&serializedCity[0], citiesSize*3, MPI_INT, 0, MPI_COMM_WORLD);
 
     std::vector<double> costs;
     if(rank){
