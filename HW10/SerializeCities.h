@@ -17,13 +17,13 @@ class SerializeCities
 std::vector<int> SerializeCities::Serialize(std::vector<City> cities)
 {
     auto returnVector = std::vector<int>(cities.size()*3, 0);
-    returnVector[0] = cities[0].GetName();
-    returnVector[1] = cities[0].GetX();
-    returnVector[2] = cities[0].GetY();
-    for(int i = 3; i < cities.size(); i+=3){
-        returnVector[i] = cities[i].GetName();
-        returnVector[i+1] = cities[i].GetX();
-        returnVector[i+2] = cities[i].GetY();
+//    returnVector[0] = cities[0].GetName();
+//    returnVector[1] = cities[0].GetX();
+//    returnVector[2] = cities[0].GetY();
+    for(int i = 0, j = 0; i < cities.size(); i++, j+=3){
+        returnVector[j] = cities[i].GetName();
+        returnVector[j+1] = cities[i].GetX();
+        returnVector[j+2] = cities[i].GetY();
 
     }
     return returnVector;
