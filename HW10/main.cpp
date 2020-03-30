@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
         costMatrix = CostMatrixGenerator::GenerateCostMatrix(cities);
 
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
-        SerializeCities::Serialize(cities);
+        serializedCity = SerializeCities::Serialize(cities);
     }
 
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
