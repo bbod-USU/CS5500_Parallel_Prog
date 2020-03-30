@@ -30,7 +30,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         std::cout << source[i].GetName() << " ";
     }
     std::cout << std::endl << std::endl;
-    std::cout << "next perm: ";
+    std::cout <<"Rank: " << rank << " next perm: ";
     for(int i = 0; i < nextPerm.size(); i++){
         std::cout << nextPerm[i].GetName() << " ";
     }
