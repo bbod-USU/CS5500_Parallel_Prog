@@ -29,10 +29,6 @@ int main(int argc, char* argv[])
             std::cout << std::endl;
         }
         flatMatrix = matrixTools::FlattenMatrix(matrix);
-        for(int i = 0; i < flatMatrix.size(); i++){
-            std::cout << flatMatrix[i] << " ";
-        }
-        std::cout<<std::endl;
     }
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
     if(rank){
@@ -45,6 +41,10 @@ int main(int argc, char* argv[])
     std::cout << "before bcast" << std::endl;
     MPI_Bcast(&flatMatrix, flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
     if(rank){
+        for(int i = 0; i < citiesSize*citiesSize; i++){
+            std::cout << flatMatrix[i] << " ";
+        }
+        std::cout << std::endl;
         matrix = matrixTools::UnflattenMatrix(flatMatrix, citiesSize, citiesSize);
         std::cout << "after unflatten" << std::endl;
         std::cout << "Process "<< rank << " has value " << citiesSize << " as size of city" << std::endl;
