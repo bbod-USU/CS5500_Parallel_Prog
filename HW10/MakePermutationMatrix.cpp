@@ -41,13 +41,13 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         localCostVector.push_back(cost);
     } while (std::next_permutation(myPerm.begin(), myPerm.end()) && myPerm != nextPerm);
 
-    //find the lowest and add it to a lowest vector.
-    auto lowest = std::vector<double>(1,localCostVector[0]);
-    for(int i = 0; i < localCostVector.size(); i++) {
-        if(localCostVector[i] < lowest[0])
-            lowest[0] = localCostVector[i];
-            std::cout << lowest[0] << " ";
-    }
+//    //find the lowest and add it to a lowest vector.
+//    auto lowest = std::vector<double>(1,localCostVector[0]);
+//    for(int i = 0; i < localCostVector.size(); i++) {
+//        if(localCostVector[i] < lowest[0])
+//            lowest[0] = localCostVector[i];
+//            std::cout << lowest[0] << " ";
+//    }
     std::cout<< std::endl;
     MPI_Gather(&localCostVector,1, MPI_DOUBLE, &returnVector,1, MPI_DOUBLE,0, MPI_COMM_WORLD);
 
