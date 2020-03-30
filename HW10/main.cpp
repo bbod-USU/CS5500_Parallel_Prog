@@ -1,7 +1,7 @@
 #include "CostMatrixGenerator.h"
-//#import "MakePermutationMatrix.h"
-#include "ReadFromFile.h"
+#include "MakePermutationMatrix.h"
 #include "ParseMatrixForMPI.h"
+#include "ReadFromFile.h"
 #include "mpi.h"
 
 #include <iostream>
@@ -13,51 +13,42 @@ int main(int argc, char* argv[])
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MCW, &rank);
     MPI_Comm_size(MCW, &size);
-    std::vector<std::vector<double>> matrix;
+    std::vector<std::vector<double>> costMatrix;
     std::vector<City> cities;
     std::vector<double> flatMatrix;
     if (rank == 0) {
         std::cout << "Reading in file" << std::endl;
         cities = ReadFromFile::ReadFile("../input");
         citiesSize = cities.size();
-        //Make matrix
-        matrix = CostMatrixGenerator::GenerateCostMatrix(cities);
+        //Make costMatrix
+        costMatrix = CostMatrixGenerator::GenerateCostMatrix(cities);
         for(int i =0; i < cities.size(); i++){
             for(int j = 0; j< cities.size(); j++){
-                std::cout << matrix[i][j] << " ";
+                std::cout << costMatrix[i][j] << " ";
             }
             std::cout << std::endl;
         }
-        flatMatrix = matrixTools::FlattenMatrix(matrix);
+        flatMatrix = matrixTools::FlattenMatrix(costMatrix);
     }
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
     if(rank){
         // reserve memory for vectors
         flatMatrix.resize(citiesSize*citiesSize);
-        matrix.resize(citiesSize);
+
+        costMatrix.resize(citiesSize);
         for(int i = 0; i < citiesSize; i++) {
-            matrix[i].resize(citiesSize);
+            costMatrix[i].resize(citiesSize);
         }
     }
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
     if(rank){
-        std::cout <<"Flat Matrix Size :" << flatMatrix.size() << std::endl;
-        for(int i = 0; i < citiesSize*citiesSize; i++){
-            std::cout << flatMatrix[i] << " ";
-        }
-        std::cout << std::endl;
-        matrix = matrixTools::UnflattenMatrix(flatMatrix, citiesSize, citiesSize);
-        std::cout << "after unflatten" << std::endl;
-        std::cout << "Process "<< rank << " has value " << citiesSize << " as size of city" << std::endl;
-        for(int i = 0; i < citiesSize; i++) {
-            for (int j = 0; j < citiesSize; j++) {
-                std::cout << "Process " << rank << " has value " << matrix[i][j] << " at postion"
-                          << "(" << i << "," << j << ")" << std::endl;
-            }
-        }
+        costMatrix = matrixTools::UnflattenMatrix(flatMatrix, citiesSize, citiesSize);
+            //Make permutations
+        auto perms = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
+
     }
+
     MPI_Finalize();
-//    //Make permutations
-//    auto perms = MakePermutationMatrix::GetLowestCost(cities, rank, size, matrix);
+
 return 0;
 }
