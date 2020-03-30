@@ -28,6 +28,7 @@ int main(int argc, char* argv[])
 //            std::cout << std::endl;
 //        }
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
+        std::cout << "Here: ";
         for(int i = 0; i < cities.size(); i++){
             std::cout << cities[i].GetName() << " ";
         }
