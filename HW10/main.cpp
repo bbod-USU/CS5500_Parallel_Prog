@@ -29,6 +29,10 @@ int main(int argc, char* argv[])
         for(int i = 0; i < citiesSize; i++){
             std::cout << "Name: "<<cities[i].GetName() << " (" << cities[i].GetX() << ", " << cities[i].GetY() << ")" <<std::endl;
         }
+        for(int i = 0; i < serializedCity.size(); i++){
+            std::cout << "Serialized city: " << serializedCity[i] <<" ";
+        }
+        std::cout<<std::endl;
     }
 
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
