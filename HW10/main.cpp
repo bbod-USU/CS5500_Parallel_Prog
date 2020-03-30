@@ -3,6 +3,7 @@
 #include "ParseMatrixForMPI.h"
 #include "ReadFromFile.h"
 #include "mpi.h"
+#include "SerializeCities.h"
 
 #define MCW MPI_COMM_WORLD
 int main(int argc, char* argv[])
@@ -15,6 +16,7 @@ int main(int argc, char* argv[])
     std::vector<std::vector<double>> costMatrix;
     std::vector<City> cities;
     std::vector<double> flatMatrix;
+    std::vector<double> serializedCity;
     if (rank == 0) {
         std::cout << "Reading in file" << std::endl;
         cities = ReadFromFile::ReadFile("../input");
@@ -28,6 +30,7 @@ int main(int argc, char* argv[])
 //            std::cout << std::endl;
 //        }
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
+        SerializeCities::Serialize(cities);
         std::cout << "Here: ";
         for(int i = 0; i < cities.size(); i++){
             std::cout << cities[i].GetName() << " ";
@@ -39,6 +42,7 @@ int main(int argc, char* argv[])
         // reserve memory for vectors
         flatMatrix.resize(citiesSize*citiesSize);
         cities.resize(citiesSize);
+        serializedCity.resize(citiesSize*3);
         costMatrix.resize(citiesSize);
         for(int i = 0; i < citiesSize; i++) {
             costMatrix[i].resize(citiesSize);
@@ -48,13 +52,22 @@ int main(int argc, char* argv[])
             std::cout << cities[i].GetName() << " ";
         }
         std::cout << std::endl;
+
     }
 
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    MPI_Bcast(&cities[0], citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&serializedCity[0], citiesSize*3, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
     std::vector<double> costs;
     if(rank){
+        cities = SerializeCities::Deserialize(serializedCity);
+
+        std::cout << "After B_cast: ";
+        for(int i = 0; i < cities.size(); i++){
+            std::cout << cities[i].GetName() << " ";
+        }
+        std::cout << std::endl;
+
         costMatrix = matrixTools::UnflattenMatrix(flatMatrix, citiesSize, citiesSize);
             //Make permutations
             std::cout << "source size from main " << cities.size() << std::endl;
