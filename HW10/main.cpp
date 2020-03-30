@@ -48,10 +48,11 @@ int main(int argc, char* argv[])
     }
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
     MPI_Bcast(&serializedCity[0], serializedCity.size(), MPI_INT, 0, MPI_COMM_WORLD);
-    std::cout << "here" << std::endl;
 
     std::vector<double> costs;
     if(rank){
+        std::cout << "IM HERE" << std::endl;
+
         cities = SerializeCities::Deserialize(serializedCity);
 
         std::cout << "After B_cast: ";
