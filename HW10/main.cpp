@@ -51,6 +51,11 @@ int main(int argc, char* argv[])
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
     std::cout << "Rank: " << rank << " IM HERE 2" << std::endl;
     std::cout << "Rank: " << rank << " citiesSize: "<< citiesSize << std::endl;
+    std::cout << "flat cities: ";
+    for(int i = 0; i < serializedCity.size(); i++){
+        std::cout << serializedCity[i] << " ";
+    }
+    std::cout << std::endl;
 
     MPI_Bcast(&serializedCity[0], citiesSize*3, MPI_INT, 0, MPI_COMM_WORLD);
     std::cout << "Rank: " << rank << " IM HERE 3" << std::endl;
