@@ -11,16 +11,16 @@
 class SerializeCities
 {
   public:
-    static std::vector<double> Serialize(std::vector<City> cities);
-    static std::vector<City> Deserialize(std::vector<double> cities);
+    static std::vector<int> Serialize(std::vector<City> cities);
+    static std::vector<City> Deserialize(std::vector<int> cities);
 };
-std::vector<double> SerializeCities::Serialize(std::vector<City> cities)
+std::vector<int> SerializeCities::Serialize(std::vector<City> cities)
 {
-    auto returnVector = std::vector<double>(cities.size()*3, 0);
+    auto returnVector = std::vector<int>(cities.size()*3, 0);
     returnVector[0] = cities[0].GetName();
     returnVector[1] = cities[0].GetX();
     returnVector[2] = cities[0].GetY();
-    for(int i = 3; i < cities.size()*3; i+=3){
+    for(int i = 3; i < cities.size(); i+=3){
         returnVector[i] = cities[i].GetName();
         returnVector[i+1] = cities[i].GetX();
         returnVector[i+2] = cities[i].GetY();
@@ -29,7 +29,7 @@ std::vector<double> SerializeCities::Serialize(std::vector<City> cities)
     return returnVector;
 }
 
-std::vector<City> SerializeCities::Deserialize(std::vector<double> cities)
+std::vector<City> SerializeCities::Deserialize(std::vector<int> cities)
 {
     auto returnVector = std::vector<City>();
     for(int i = 0; i < cities.size(); i+=3){
