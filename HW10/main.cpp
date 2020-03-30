@@ -26,11 +26,6 @@ int main(int argc, char* argv[])
 
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
         SerializeCities::Serialize(cities);
-        std::cout << cities.size() << " Here: ";
-        for(int i = 0; i < cities.size(); i++){
-            std::cout << cities[i].GetName() << " ";
-        }
-        std::cout << std::endl;
     }
 
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
@@ -51,8 +46,9 @@ int main(int argc, char* argv[])
         std::cout << std::endl;
 
     }
-
+    std::cout << "here" << std::endl;
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    std::cout << "here2" << std::endl;
     MPI_Bcast(&serializedCity[0], serializedCity.size(), MPI_INT, 0, MPI_COMM_WORLD);
 
     std::vector<double> costs;
