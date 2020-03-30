@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
     if(rank){
         // reserve memory for vectors
         flatMatrix.resize(citiesSize*citiesSize);
-        //cities.resize(citiesSize);
+        cities.resize(citiesSize);
         costMatrix.resize(citiesSize);
         for(int i = 0; i < citiesSize; i++) {
             costMatrix[i].resize(citiesSize);
@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
     }
 
     MPI_Bcast(&flatMatrix[0], flatMatrix.size(), MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    MPI_Bcast(&cities[0], cities.size(), MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&cities[0], citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
     std::vector<double> costs;
     if(rank){
