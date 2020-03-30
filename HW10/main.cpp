@@ -26,11 +26,11 @@ int main(int argc, char* argv[])
 
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
         SerializeCities::Serialize(cities);
-//        std::cout << cities.size() << " Here: ";
-//        for(int i = 0; i < cities.size(); i++){
-//            std::cout << cities[i].GetName() << " ";
-//        }
-//        std::cout << std::endl;
+        std::cout << cities.size() << " Here: ";
+        for(int i = 0; i < cities.size(); i++){
+            std::cout << cities[i].GetName() << " ";
+        }
+        std::cout << std::endl;
     }
 
     MPI_Bcast(&citiesSize, 1, MPI_INT, 0, MPI_COMM_WORLD);
