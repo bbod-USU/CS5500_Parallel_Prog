@@ -18,7 +18,6 @@ int main(int argc, char* argv[])
         std::cout << "Reading in file" << std::endl;
         cities = ReadFromFile::ReadFile("../input");
         citiesSize = cities.size();
-        std::cout << "after set "<< rank << " has value " << citiesSize << "as size of city" << std::endl;
         //Make matrix
         matrix = CostMatrixGenerator::GenerateCostMatrix(cities);
     }
@@ -31,13 +30,13 @@ int main(int argc, char* argv[])
         }
     }
     MPI_Bcast(&(matrix[0][0]), citiesSize*citiesSize, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    std::cout << "Process "<< rank << " has value " << citiesSize << "as size of city" << std::endl;
 
     if(rank){
-        std::cout << "Process "<< rank << " has value " << citiesSize << "as size of city" << std::endl;
+        std::cout << "ci"
+        std::cout << "Process "<< rank << " has value " << citiesSize << " as size of city" << std::endl;
         for(int i = 0; i < citiesSize; i++){
             for(int j = 0; j < citiesSize; j++) {
-                std::cout<<"Process " << rank << " has value " << matrix[i][j] << std::endl;
+                std::cout<<"Process " << rank << " has value " << matrix[i][j] << " at postion" << "(" << i << "," << j << ")" << std::endl;
             }
         }
     }
