@@ -14,6 +14,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
+    auto lowest = INT_MAX;
 
     //return vector should be the size of number of processors as they are going to only return their own smallest.
     returnVector.resize(source.size(), 0);
@@ -52,9 +53,10 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
             cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
         }
         std::cout << std::endl << std::endl;
-
+        if(cost < lowest)
+            lowest = cost;
         //Push permutation cost to the localCostVector.
-        localCostVector.push_back(cost);
+        //localCostVector.push_back(cost);
     } while (std::next_permutation(myPerm.begin(), myPerm.end()) && myPerm!=nextPerm);
 
 //    //find the lowest and add it to a lowest vector.
@@ -65,7 +67,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
 //            std::cout << lowest[0] << " ";
 //    }
 
-    std::cout<< "Rank: "<< rank<< "cost count: "<< localCostVector.size() << std::endl;
+    std::cout<< "Rank: "<< rank<< "lowest cost: "<< lowest << std::endl;
     std::cout << "Rank: "<< rank <<" Last Perm: ";
     for(int i = 0; i < myPerm.size(); i++){
         std::cout << myPerm[i].GetName() << " ";
