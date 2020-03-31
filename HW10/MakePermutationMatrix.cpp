@@ -11,7 +11,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::vector<double> returnVector;
     std::vector<double> localCostVector;
     std::size_t counter = 0;
-    int vectorOffset = (source.size()+1)/2;
+    int vectorOffset = (source.size())/2;
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
@@ -20,7 +20,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     returnVector.resize(source.size(), 0);
 
     //the "nextPerm" is the permutation to stop at.
-    std::rotate(nextPerm.begin(), nextPerm.begin()+(rank+1), nextPerm.end());
+    std::rotate(nextPerm.begin(), nextPerm.begin()+(rank+vectorOffset), nextPerm.end());
 
     //rotate my perm.
     std::rotate(myPerm.begin(), myPerm.begin()+rank,myPerm.end());
