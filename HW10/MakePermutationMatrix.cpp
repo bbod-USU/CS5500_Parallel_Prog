@@ -35,6 +35,9 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         std::cout << nextPerm[i].GetName() << " ";
     }
     std::cout << std::endl;
+    if(rank == size-1){
+        nextPerm = source;
+    }
     do {
         double cost = 0;
         //Add up the cost of the current permutation.
