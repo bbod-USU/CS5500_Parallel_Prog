@@ -20,7 +20,9 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     returnVector.resize(source.size(), 0);
 
     //the "nextPerm" is the permutation to stop at.
-    std::rotate(nextPerm.begin(), nextPerm.begin()+(rank+1+vectorOffset), nextPerm.end());
+    if(!rank)
+        std::rotate(nextPerm.begin(), nextPerm.begin() + (rank + 1 + vectorOffset), nextPerm.end());
+
     std::partial_sort(nextPerm.begin()+1, nextPerm.end(), nextPerm.end());
     //rotate my perm.
     std::rotate(myPerm.begin(), myPerm.begin()+(rank+vectorOffset),myPerm.end());
