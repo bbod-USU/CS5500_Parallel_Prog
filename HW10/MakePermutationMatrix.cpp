@@ -39,6 +39,11 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         std::cout << nextPerm[i].GetName() << " ";
     }
     std::cout << std::endl;
+    std::cout <<"Rank: " << rank << " My perm: ";
+    for(int i = 0; i < myPerm.size(); i++){
+        std::cout << myPerm[i].GetName() << " ";
+    }
+    std::cout << std::endl;
     if(rank == size-1){
         nextPerm = source;
     }
