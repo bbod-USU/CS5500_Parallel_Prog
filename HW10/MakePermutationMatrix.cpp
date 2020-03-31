@@ -6,7 +6,7 @@
 #include "mpi.h"
 #include <algorithm>
 #include <iostream>
-#include <limits.h>
+#include <climits>
 
 std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
     std::vector<double> returnVector;
@@ -47,13 +47,13 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     do {
         std::size_t cost = 0;
         //Add up the cost of the current permutation.
-       // std::cout <<"Rank: " << rank << " Current perm: ";
-        std::cout << "Rank: "<< rank;
+        // std::cout <<"Rank: " << rank << " Current perm: ";
+        //std::cout << "Rank: "<< rank;
         for (int i = 0; i < myPerm.size(); i++) {
-           std::cout << " " << myPerm[i].GetName();
+           //std::cout << " " << myPerm[i].GetName();
             cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
         }
-        std::cout << std::endl << std::endl;
+        //std::cout << std::endl << std::endl;
         if(cost < lowest)
             lowest = cost;
         //Push permutation cost to the localCostVector.
