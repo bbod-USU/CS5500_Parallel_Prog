@@ -43,12 +43,12 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     do {
         double cost = 0;
         //Add up the cost of the current permutation.
-        std::cout <<"Rank: " << rank << " Current perm: ";
+       // std::cout <<"Rank: " << rank << " Current perm: ";
         for (int i = 0; i < myPerm.size(); i++) {
-            std::cout << myPerm[i].GetName() << " ";
+           // std::cout << myPerm[i].GetName() << " ";
             cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
         }
-        std::cout << std::endl << std::endl;
+        //std::cout << std::endl << std::endl;
 
         //Push permutation cost to the localCostVector.
         localCostVector.push_back(cost);
