@@ -12,6 +12,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::vector<double> localCostVector;
     std::size_t offset = 12;
     std::size_t counter = 0;
+    int vectorOffset = (source.size()+1)/2;
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
@@ -33,7 +34,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     //std::rotate(nextPerm.begin(), nextPerm.begin()+(rank+1)*offset, nextPerm.end());
 
     //rotate my perm.
-    std::rotate(myPerm.begin(), myPerm.begin()+offset*rank,myPerm.end());
+    std::rotate(myPerm.begin(), myPerm.begin()+vectorOffset*rank,myPerm.end());
     //std::cout << "source.last(): " << source[8].GetName() << std::endl;
     std::cout << "source: ";
     for(int i = 0; i < source.size(); i++){
