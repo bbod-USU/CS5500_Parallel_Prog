@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cfloat>
 
-std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
+long double MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
     std::vector<double> returnVector;
     std::vector<std::size_t> localCostVector;
     int vectorOffset = source.size()/size;
@@ -77,9 +77,13 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::cout << std::endl;
     //MPI_Gather(&localCostVector,1, MPI_DOUBLE, &returnVector,1, MPI_DOUBLE,0, MPI_COMM_WORLD);
 
-    return returnVector;
+    return lowest;
 }
 
-std::vector<double> MakePermutationMatrix::GetLowestCost(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
-    return MakePermutation(source, rank, size, costMatrix);
+long double MakePermutationMatrix::GetLowestCost(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
+    std::vector<long double> l(size,0);
+    auto lowest = MakePermutation(source, rank, size, costMatrix);
+    MPI_Gather(&lowest,1,MPI_LONG_DOUBLE,l.data(),1,MPI_LONG_DOUBLE,0,MPI_COMM_WORLD);
+    std::sort(l.begin(), l.end());
+    return l[l.size()-1];
 }

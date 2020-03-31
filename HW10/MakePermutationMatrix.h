@@ -10,10 +10,10 @@
 class MakePermutationMatrix
 {
   public:
-    static std::vector<double> GetLowestCost(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix);
+    long double GetLowestCost(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix);
 
   private:
-    static std::vector<double> MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix);
+    long double MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix);
 };
 
 #endif // HW10_MAKEPERMUTATIONMATRIX_H

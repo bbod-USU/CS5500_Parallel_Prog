@@ -9,7 +9,7 @@
 int main(int argc, char* argv[])
 {
     int rank, size, citiesSize;
-    int data;
+    long double lowestCost = 0;
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MCW, &rank);
     MPI_Comm_size(MCW, &size);
@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
             //Make permutations
 
     }
-    costs = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
+    lowestCost = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
 //    if(!rank){
 //        std::cout << costs.size() << std::endl;
 //        std::cout << costs[0];
