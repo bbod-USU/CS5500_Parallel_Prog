@@ -25,7 +25,8 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
 
     std::partial_sort(nextPerm.begin()+1, nextPerm.end(), nextPerm.end());
     //rotate my perm.
-    std::rotate(myPerm.begin(), myPerm.begin()+(rank+vectorOffset),myPerm.end());
+    if(rank!=0)
+        std::rotate(myPerm.begin(), myPerm.begin()+(rank-1+vectorOffset),myPerm.end());
     std::partial_sort(myPerm.begin()+1, myPerm.end(), myPerm.end());
 
     //std::cout << "source.last(): " << source[8].GetName() << std::endl;
