@@ -10,7 +10,7 @@
 std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
     std::vector<double> returnVector;
     std::vector<double> localCostVector;
-    std::size_t offset;
+    std::size_t offset = 12;
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
@@ -22,7 +22,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         offset = totalNumPermutations/size;
         std::cout << "offset: "<<offset <<std::endl;
     }
-    MPI_Bcast(&offset, 1, MPI_LONG_LONG_INT, 0, MPI_COMM_WORLD);
+    //MPI_Bcast(&offset, 1, MPI_LONG_LONG_INT, 0, MPI_COMM_WORLD);
 
 
     //return vector should be the size of number of processors as they are going to only return their own smallest.
