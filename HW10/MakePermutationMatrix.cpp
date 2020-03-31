@@ -30,11 +30,6 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::partial_sort(myPerm.begin()+1, myPerm.end(), myPerm.end());
 
     //std::cout << "source.last(): " << source[8].GetName() << std::endl;
-    std::cout << "source: ";
-    for(int i = 0; i < source.size(); i++){
-        std::cout << source[i].GetName() << " ";
-    }
-    std::cout << std::endl << std::endl;
     std::cout <<"Rank: " << rank << " next perm: ";
     for(int i = 0; i < nextPerm.size(); i++){
         std::cout << nextPerm[i].GetName() << " ";

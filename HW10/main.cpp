@@ -46,20 +46,9 @@ int main(int argc, char* argv[])
 
     std::vector<double> costs;
     if(rank){
-        std::cout << "IM HERE" << std::endl;
-
         cities = SerializeCities::Deserialize(serializedCity);
-
-        std::cout << "After B_cast: ";
-        for(int i = 0; i < cities.size(); i++){
-            std::cout << cities[i].GetName() << " ";
-        }
-        std::cout << std::endl;
-
         costMatrix = matrixTools::UnflattenMatrix(flatMatrix, citiesSize, citiesSize);
             //Make permutations
-            std::cout << "source size from main " << cities.size() << std::endl;
-
 
     }
     costs = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
