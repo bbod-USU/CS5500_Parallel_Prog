@@ -10,8 +10,7 @@
 std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
     std::vector<double> returnVector;
     std::vector<std::size_t> localCostVector;
-    std::size_t counter = 0;
-    int vectorOffset = (source.size())/size;
+    int vectorOffset = source.size()/size;
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
@@ -30,16 +29,16 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::partial_sort(myPerm.begin()+1, myPerm.end(), myPerm.end());
 
     //std::cout << "source.last(): " << source[8].GetName() << std::endl;
-    std::cout <<"Rank: " << rank << " next perm: ";
-    for(int i = 0; i < nextPerm.size(); i++){
-        std::cout << nextPerm[i].GetName() << " ";
-    }
-    std::cout << std::endl;
-    std::cout <<"Rank: " << rank << " My perm: ";
-    for(int i = 0; i < myPerm.size(); i++){
-        std::cout << myPerm[i].GetName() << " ";
-    }
-    std::cout << std::endl;
+//    std::cout <<"Rank: " << rank << " next perm: ";
+//    for(int i = 0; i < nextPerm.size(); i++){
+//        std::cout << nextPerm[i].GetName() << " ";
+//    }
+//    std::cout << std::endl;
+//    std::cout <<"Rank: " << rank << " My perm: ";
+//    for(int i = 0; i < myPerm.size(); i++){
+//        std::cout << myPerm[i].GetName() << " ";
+//    }
+//    std::cout << std::endl;
     if(rank == size-1){
         nextPerm = source;
     }
@@ -48,14 +47,13 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         //Add up the cost of the current permutation.
        // std::cout <<"Rank: " << rank << " Current perm: ";
         for (int i = 0; i < myPerm.size(); i++) {
-           // std::cout << myPerm[i].GetName() << " ";
+            std::cout << "Rank: "<< rank << " i: " << i;
             cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
         }
-        //std::cout << std::endl << std::endl;
+        std::cout << std::endl << std::endl;
 
         //Push permutation cost to the localCostVector.
         localCostVector.push_back(cost);
-        counter++;
     } while (std::next_permutation(myPerm.begin(), myPerm.end()) && myPerm!=nextPerm);
 
 //    //find the lowest and add it to a lowest vector.
