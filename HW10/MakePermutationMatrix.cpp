@@ -35,7 +35,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         std::cout << nextPerm[i].GetName() << " ";
     }
     std::cout << std::endl;
-    if(!rank){do {
+    do {
         double cost = 0;
         //Add up the cost of the current permutation.
         std::cout <<"Rank: " << rank << " Current perm: ";
@@ -49,7 +49,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         localCostVector.push_back(cost);
         counter++;
     } while (std::next_permutation(myPerm.begin(), myPerm.end()) && myPerm!=nextPerm);
-}
+
 //    //find the lowest and add it to a lowest vector.
 //    auto lowest = std::vector<double>(1,localCostVector[0]);
 //    for(int i = 0; i < localCostVector.size(); i++) {
