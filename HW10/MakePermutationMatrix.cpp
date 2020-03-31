@@ -29,18 +29,6 @@ long double MakePermutationMatrix::MakePermutation(std::vector<City> source, int
     if(rank!=0)
         std::rotate(myPerm.begin(), myPerm.begin()+(((rank-1)*vectorOffset)+vectorOffset),myPerm.end());
     std::partial_sort(myPerm.begin()+1, myPerm.end(), myPerm.end());
-
-    //std::cout << "source.last(): " << source[8].GetName() << std::endl;
-//    std::cout <<"Rank: " << rank << " next perm: ";
-//    for(int i = 0; i < nextPerm.size(); i++){
-//        std::cout << nextPerm[i].GetName() << " ";
-//    }
-//    std::cout << std::endl;
-//    std::cout <<"Rank: " << rank << " My perm: ";
-//    for(int i = 0; i < myPerm.size(); i++){
-//        std::cout << myPerm[i].GetName() << " ";
-//    }
-//    std::cout << std::endl;
     if(rank == size-1){
         nextPerm = source;
     }
@@ -60,22 +48,6 @@ long double MakePermutationMatrix::MakePermutation(std::vector<City> source, int
         //Push permutation cost to the localCostVector.
         //localCostVector.push_back(cost);
     } while (std::next_permutation(myPerm.begin(), myPerm.end()) && myPerm!=nextPerm);
-
-//    //find the lowest and add it to a lowest vector.
-//    auto lowest = std::vector<double>(1,localCostVector[0]);
-//    for(int i = 0; i < localCostVector.size(); i++) {
-//        if(localCostVector[i] < lowest[0])
-//            lowest[0] = localCostVector[i];
-//            std::cout << lowest[0] << " ";
-//    }
-
-    std::cout<< "Rank: "<< rank<< "lowest cost: "<< lowest << std::endl;
-    std::cout << "Rank: "<< rank <<" Last Perm: ";
-    for(int i = 0; i < myPerm.size(); i++){
-        std::cout << myPerm[i].GetName() << " ";
-    }
-    std::cout << std::endl;
-    //MPI_Gather(&localCostVector,1, MPI_DOUBLE, &returnVector,1, MPI_DOUBLE,0, MPI_COMM_WORLD);
 
     return lowest;
 }

@@ -23,12 +23,6 @@ int main(int argc, char* argv[])
         citiesSize = cities.size();
         //Make costMatrix
         costMatrix = CostMatrixGenerator::GenerateCostMatrix(cities);
-        for(int i = 0; i < citiesSize; i++){
-            for(int j = 0; j<citiesSize; j++){
-                std::cout << costMatrix[i][j] << " ";
-            }
-            std::cout << std::endl;
-        }
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
         serializedCity = SerializeCities::Serialize(cities);
     }
@@ -57,13 +51,12 @@ int main(int argc, char* argv[])
 
     }
     lowestCost = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
-    std::cout << "The lowest cost is " << lowestCost << std::endl;
 //    if(!rank){
 //        std::cout << costs.size() << std::endl;
 //        std::cout << costs[0];
 //    }
-
     MPI_Finalize();
+    std::cout << "The lowest cost is " << lowestCost << std::endl;
 
 return 0;
 }
