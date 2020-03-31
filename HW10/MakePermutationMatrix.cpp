@@ -48,7 +48,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
        // std::cout <<"Rank: " << rank << " Current perm: ";
         std::cout << "Rank: "<< rank;
         for (int i = 0; i < myPerm.size(); i++) {
-           std::cout << " i: " << i;
+           std::cout << " " << myPerm[i].GetName();
             cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
         }
         std::cout << std::endl << std::endl;
