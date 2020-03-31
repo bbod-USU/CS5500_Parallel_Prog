@@ -6,7 +6,7 @@
 #include "mpi.h"
 #include <algorithm>
 #include <iostream>
-#include <climits>
+#include <cfloat>
 
 std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
     std::vector<double> returnVector;
@@ -15,7 +15,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
-    auto lowest = INT_MAX;
+    auto lowest = LDBL_MAX;
 
     //return vector should be the size of number of processors as they are going to only return their own smallest.
     returnVector.resize(source.size(), 0);
