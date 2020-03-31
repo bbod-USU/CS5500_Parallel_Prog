@@ -15,13 +15,13 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
 
-    if(!rank){
-        size_t totalNumPermutations = 1;
-        for(size_t i = 1; i <= source.size(); i++)
-            totalNumPermutations *= i;
-        offset = totalNumPermutations/size;
-        std::cout << "offset: "<<offset <<std::endl;
-    }
+//    if(!rank){
+//        size_t totalNumPermutations = 1;
+//        for(size_t i = 1; i <= source.size(); i++)
+//            totalNumPermutations *= i;
+//        offset = totalNumPermutations/size;
+//        std::cout << "offset: "<<offset <<std::endl;
+//    }
     //MPI_Bcast(&offset, 1, MPI_LONG_LONG_INT, 0, MPI_COMM_WORLD);
 
 
