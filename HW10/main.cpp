@@ -23,7 +23,12 @@ int main(int argc, char* argv[])
         citiesSize = cities.size();
         //Make costMatrix
         costMatrix = CostMatrixGenerator::GenerateCostMatrix(cities);
-
+        for(int i = 0; i < citiesSize; i++){
+            for(int j = 0; j<citiesSize; j++){
+                std::cout << costMatrix[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
         flatMatrix = matrixTools::FlattenMatrix(costMatrix);
         serializedCity = SerializeCities::Serialize(cities);
     }
