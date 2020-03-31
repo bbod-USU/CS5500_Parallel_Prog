@@ -4,9 +4,7 @@
 #include "ReadFromFile.h"
 #include "SerializeCities.h"
 #include "mpi.h"
-
 #include <chrono>
-#include <tclDecls.h>
 
 #define MCW MPI_COMM_WORLD
 int main(int argc, char* argv[])
