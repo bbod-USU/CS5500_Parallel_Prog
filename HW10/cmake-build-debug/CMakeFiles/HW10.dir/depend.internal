@@ -9,6 +9,8 @@ CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.cpp
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.h
+ /usr/local/Cellar/open-mpi/4.0.2/include/mpi.h
+ /usr/local/Cellar/open-mpi/4.0.2/include/mpi_portable_platform.h
 CMakeFiles/HW10.dir/ReadFromFile.cpp.o
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp
@@ -16,8 +18,10 @@ CMakeFiles/HW10.dir/ReadFromFile.cpp.o
 CMakeFiles/HW10.dir/main.cpp.o
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.h
+ /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.h
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ParseMatrixForMPI.h
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.h
+ /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/SerializeCities.h
  /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/main.cpp
  /usr/local/Cellar/open-mpi/4.0.2/include/mpi.h
  /usr/local/Cellar/open-mpi/4.0.2/include/mpi_portable_platform.h

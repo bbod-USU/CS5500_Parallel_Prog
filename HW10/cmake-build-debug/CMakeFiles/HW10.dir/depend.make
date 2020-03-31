@@ -8,6 +8,8 @@ CMakeFiles/HW10.dir/CostMatrixGenerator.cpp.o: ../CostMatrixGenerator.h
 CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o: ../City.h
 CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o: ../MakePermutationMatrix.cpp
 CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o: ../MakePermutationMatrix.h
+CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o: /usr/local/Cellar/open-mpi/4.0.2/include/mpi.h
+CMakeFiles/HW10.dir/MakePermutationMatrix.cpp.o: /usr/local/Cellar/open-mpi/4.0.2/include/mpi_portable_platform.h
 
 CMakeFiles/HW10.dir/ReadFromFile.cpp.o: ../City.h
 CMakeFiles/HW10.dir/ReadFromFile.cpp.o: ../ReadFromFile.cpp
@@ -15,8 +17,10 @@ CMakeFiles/HW10.dir/ReadFromFile.cpp.o: ../ReadFromFile.h
 
 CMakeFiles/HW10.dir/main.cpp.o: ../City.h
 CMakeFiles/HW10.dir/main.cpp.o: ../CostMatrixGenerator.h
+CMakeFiles/HW10.dir/main.cpp.o: ../MakePermutationMatrix.h
 CMakeFiles/HW10.dir/main.cpp.o: ../ParseMatrixForMPI.h
 CMakeFiles/HW10.dir/main.cpp.o: ../ReadFromFile.h
+CMakeFiles/HW10.dir/main.cpp.o: ../SerializeCities.h
 CMakeFiles/HW10.dir/main.cpp.o: ../main.cpp
 CMakeFiles/HW10.dir/main.cpp.o: /usr/local/Cellar/open-mpi/4.0.2/include/mpi.h
 CMakeFiles/HW10.dir/main.cpp.o: /usr/local/Cellar/open-mpi/4.0.2/include/mpi_portable_platform.h

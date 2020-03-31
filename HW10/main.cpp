@@ -57,6 +57,7 @@ int main(int argc, char* argv[])
 
     }
     lowestCost = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
+    std::cout << "The lowest cost is " << lowestCost << std::endl;
 //    if(!rank){
 //        std::cout << costs.size() << std::endl;
 //        std::cout << costs[0];

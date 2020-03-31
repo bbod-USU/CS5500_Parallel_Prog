@@ -16,9 +16,33 @@ cmath
 vector
 -
 
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.cpp
+MakePermutationMatrix.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.h
+mpi.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/mpi.h
+algorithm
+-
+iostream
+-
+cfloat
+-
+
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.h
+City.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
+vector
+-
+
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ParseMatrixForMPI.h
 vector
 -
+
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.cpp
+experimental/filesystem
+-
+ReadFromFile.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.h
 
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.h
 City.h
@@ -34,17 +58,25 @@ string
 vector
 -
 
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/SerializeCities.h
+vector
+-
+City.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/City.h
+
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/main.cpp
 CostMatrixGenerator.h
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/CostMatrixGenerator.h
-ReadFromFile.h
-/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.h
+MakePermutationMatrix.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/MakePermutationMatrix.h
 ParseMatrixForMPI.h
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ParseMatrixForMPI.h
+ReadFromFile.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/ReadFromFile.h
 mpi.h
 /Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/mpi.h
-iostream
--
+SerializeCities.h
+/Users/bradybodily/Repositories/CS5500_Parallel_Programming/HW10/SerializeCities.h
 
 /usr/local/Cellar/open-mpi/4.0.2/include/mpi.h
 stddef.h
