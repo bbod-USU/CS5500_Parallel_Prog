@@ -2,13 +2,17 @@
 #include "MakePermutationMatrix.h"
 #include "ParseMatrixForMPI.h"
 #include "ReadFromFile.h"
-#include "mpi.h"
 #include "SerializeCities.h"
+#include "mpi.h"
+
+#include <chrono>
+#include <tclDecls.h>
 
 #define MCW MPI_COMM_WORLD
 int main(int argc, char* argv[])
 {
     int rank, size, citiesSize;
+    std::chrono::time_point<std::chrono::steady_clock> start, stop;
     long double lowestCost = 0;
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MCW, &rank);
@@ -50,10 +54,15 @@ int main(int argc, char* argv[])
             //Make permutations
 
     }
-    lowestCost = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
-
     if(!rank)
+        start = std::chrono::high_resolution_clock::now();
+    lowestCost = MakePermutationMatrix::GetLowestCost(cities, rank, size, costMatrix);
+    if(!rank){
+        stop = std::chrono::high_resolution_clock::now();
         std::cout << "The lowest cost is " << lowestCost << std::endl;
+        auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
+        std::cout << "Found in " << duration.count() << " seconds." << std::endl;
+    }
     MPI_Finalize();
 
 
