@@ -9,7 +9,7 @@
 
 std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
     std::vector<double> returnVector;
-    std::vector<double> localCostVector;
+    std::vector<std::size_t> localCostVector;
     std::size_t counter = 0;
     int vectorOffset = (source.size())/size;
     std::sort(source.begin(), source.end());
@@ -44,7 +44,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         nextPerm = source;
     }
     do {
-        double cost = 0;
+        std::size_t cost = 0;
         //Add up the cost of the current permutation.
        // std::cout <<"Rank: " << rank << " Current perm: ";
         for (int i = 0; i < myPerm.size(); i++) {
