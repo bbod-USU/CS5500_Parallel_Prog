@@ -10,7 +10,8 @@
 int main(int argc, char* argv[])
 {
     int rank, size, citiesSize;
-    std::chrono::time_point<std::chrono::steady_clock> start, stop;
+    auto start = std::chrono::high_resolution_clock::now();
+    auto stop = std::chrono::high_resolution_clock::now();
     long double lowestCost = 0;
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MCW, &rank);
