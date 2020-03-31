@@ -20,10 +20,10 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     returnVector.resize(source.size(), 0);
 
     //the "nextPerm" is the permutation to stop at.
-    //std::rotate(nextPerm.begin(), nextPerm.begin()+(rank+1)*offset, nextPerm.end());
+    std::rotate(nextPerm.begin(), nextPerm.begin()+(rank+1), nextPerm.end());
 
     //rotate my perm.
-    std::rotate(myPerm.begin(), myPerm.begin()+rank,myPerm.end()+rank+1);
+    std::rotate(myPerm.begin(), myPerm.begin()+rank,myPerm.end());
     //std::cout << "source.last(): " << source[8].GetName() << std::endl;
     std::cout << "source: ";
     for(int i = 0; i < source.size(); i++){
@@ -37,18 +37,11 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::cout << std::endl;
     do {
         double cost = 0;
-        std::cout <<"Rank: " << rank << " myPerm: ";
-        for(int i = 0; i < myPerm.size(); i++){
-            std::cout << myPerm[i].GetName() << " ";
-        }
-        std::cout << std::endl;
-
         //Add up the cost of the current permutation.
         for (int i = 1; i < myPerm.size(); i++) {
             cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
         }
 
-       // std::cout << "cost: " << cost <<std::endl;
         //Push permutation cost to the localCostVector.
         localCostVector.push_back(cost);
         counter++;
