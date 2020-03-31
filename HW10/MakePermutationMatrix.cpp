@@ -44,6 +44,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     if(rank == size-1){
         nextPerm = source;
     }
+    std::cout << "Rank: " << rank << " I'm here" << std::endl;
     do {
         double cost = 0;
         //Add up the cost of the current permutation.
