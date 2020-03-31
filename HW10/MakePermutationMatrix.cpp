@@ -21,7 +21,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
             totalNumPermutations *= i;
         offset = totalNumPermutations/size;
     }
-    MPI_Bcast(&offset, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&offset, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
 
     //return vector should be the size of number of processors as they are going to only return their own smallest.
