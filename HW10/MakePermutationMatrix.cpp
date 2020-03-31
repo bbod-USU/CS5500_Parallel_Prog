@@ -6,6 +6,7 @@
 #include "mpi.h"
 #include <algorithm>
 #include <iostream>
+#include <limits.h>
 
 std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> source, int rank, int size, std::vector<std::vector<double>> costMatrix){
     std::vector<double> returnVector;
