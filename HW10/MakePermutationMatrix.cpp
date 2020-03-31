@@ -20,6 +20,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         for(size_t i = 1; i <= source.size(); i++)
             totalNumPermutations *= i;
         offset = totalNumPermutations/size;
+        std::cout << "offset: "<<offset <<std::endl;
     }
     MPI_Bcast(&offset, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
