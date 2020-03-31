@@ -11,6 +11,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
     std::vector<double> returnVector;
     std::vector<double> localCostVector;
     std::size_t offset = 12;
+    std::size_t counter = 0;
     std::sort(source.begin(), source.end());
     std::vector<City> myPerm = source;
     std::vector<City> nextPerm = source;
@@ -30,7 +31,7 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         returnVector.resize(source.size(), 0);
 
     //the "nextPerm" is the permutation to stop at.
-    std::rotate(nextPerm.begin(), nextPerm.begin()+(rank+1)*offset, nextPerm.end());
+    //std::rotate(nextPerm.begin(), nextPerm.begin()+(rank+1)*offset, nextPerm.end());
 
     //rotate my perm.
     std::rotate(myPerm.begin(), myPerm.begin()+offset*rank,myPerm.end());
@@ -40,11 +41,11 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
         std::cout << source[i].GetName() << " ";
     }
     std::cout << std::endl << std::endl;
-    std::cout <<"Rank: " << rank << " next perm: ";
-    for(int i = 0; i < nextPerm.size(); i++){
-        std::cout << nextPerm[i].GetName() << " ";
-    }
-    std::cout << std::endl;
+//    std::cout <<"Rank: " << rank << " next perm: ";
+//    for(int i = 0; i < nextPerm.size(); i++){
+//        std::cout << nextPerm[i].GetName() << " ";
+//    }
+//    std::cout << std::endl;
     do {
         double cost = 0;
         std::cout <<"Rank: " << rank << " myPerm: ";
@@ -61,7 +62,8 @@ std::vector<double> MakePermutationMatrix::MakePermutation(std::vector<City> sou
        // std::cout << "cost: " << cost <<std::endl;
         //Push permutation cost to the localCostVector.
         localCostVector.push_back(cost);
-    } while (std::next_permutation(myPerm.begin(), myPerm.end()) && myPerm!=nextPerm );
+        counter++;
+    } while (std::next_permutation(myPerm.begin(), myPerm.end()) && counter != offset );
 
 //    //find the lowest and add it to a lowest vector.
 //    auto lowest = std::vector<double>(1,localCostVector[0]);
