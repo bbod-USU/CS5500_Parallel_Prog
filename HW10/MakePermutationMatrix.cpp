@@ -33,6 +33,7 @@ long double MakePermutationMatrix::MakePermutation(std::vector<City> source, int
         nextPerm = source;
     }
     std::cout << "Rank: " << rank << " I'm here" << std::endl;
+    std::cout << "Rank: " << rank << " Lowest: " << lowest << std::endl;
     do {
         double cost = 0;
         //Add up the cost of the current permutation.
