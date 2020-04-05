@@ -43,8 +43,10 @@ long double MakePermutationMatrix::MakePermutation(std::vector<City> source, int
             cost += costMatrix[myPerm[i].GetName()][myPerm[i-1].GetName()];
         }
         //std::cout << std::endl << std::endl;
-        if(cost < lowest)
+        if(cost < lowest){
             lowest = cost;
+            std::cout << "Current lowest cost: " << lowest << std::endl;
+        }
         //Push permutation cost to the localCostVector.
         //localCostVector.push_back(cost);
     } while (std::next_permutation(myPerm.begin(), myPerm.end()) && myPerm!=nextPerm);
