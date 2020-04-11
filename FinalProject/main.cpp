@@ -14,9 +14,6 @@ double B[N][N];
 double AB[N][N];
 double AB_serial[N][N];
 
-//timing variables
-double time1,time2,time3;
-
 //Function to fill matrices at random
 void fill_matrices(){
   srand(time(NULL));
@@ -64,17 +61,13 @@ void compute_interval(int start,int interval){
   }
 }
 
-int main(int argc, char** argv){
-  int interval, remainder, rank, size;
-  MPI_Init(&argc, &argv);
-  MPI_Comm_rank(MCW, &rank);
-  MPI_Comm_size(MCW, &size);
-
+void multiplyMatrix(int rank, int size){
+  //timing variables
+  double time1,time2,time3;
   //compute interval size
   //rank 0 responsible for remainder
-  interval = N/size;
-  remainder = N%size;
-
+  int interval = N/size;
+  int remainder = N%size;
   //Record start time
   MPI_Barrier(MCW);
   time1 = MPI_Wtime();
@@ -125,6 +118,18 @@ int main(int argc, char** argv){
     cout << "serial version gives:" << endl;
     print_matrix(AB_serial);
   }
+}
+
+int main(int argc, char** argv){
+  int interval, remainder, rank, size;
+  MPI_Init(&argc, &argv);
+  MPI_Comm_rank(MCW, &rank);
+  MPI_Comm_size(MCW, &size);
+  multiplyMatrix(rank, size);
+
+
+
+
 
   MPI_Finalize();
 }
