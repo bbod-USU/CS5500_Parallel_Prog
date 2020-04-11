@@ -1,0 +1,1 @@
+mpicxx  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/Cellar/libevent/2.1.11_1/lib CMakeFiles/HW10.dir/main.cpp.o  -o HW10 /usr/local/Cellar/open-mpi/4.0.2/lib/libmpi.dylib 

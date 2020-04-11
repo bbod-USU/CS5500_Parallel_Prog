@@ -1,0 +1,7 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject
+-- Found MPI_C: /usr/local/Cellar/open-mpi/4.0.2/lib/libmpi.dylib (found version "3.1") 
+-- Found MPI_CXX: /usr/local/Cellar/open-mpi/4.0.2/lib/libmpi.dylib (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1")  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug
