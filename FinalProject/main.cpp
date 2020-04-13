@@ -1,20 +1,24 @@
 #include <fstream>
 #include <iostream>
 #include <mpi.h>
-#include <stdlib.h>
-#include <time.h>
 #include <vector>
+#include "Serialize_Deserialize_Vector.h"
 
 #define MCW MPI_COMM_WORLD
 
 using namespace std;
+using sdv = Serialize_Deserialize_Vector;
 
 //Problem size
 int N;
 //global variables
-double **A, **B, **AB, **AB_serial;
+std::vector<std::vector<double> > A = std::vector<std::vector<double> >(0, std::vector<double>(0));
+std::vector<std::vector<double> > B = std::vector<std::vector<double> >(0, std::vector<double>(0));
+std::vector<std::vector<double> > AB = std::vector<std::vector<double> >(0, std::vector<double>(0));
+std::vector<std::vector<double> > AB_serial = std::vector<std::vector<double> >(0, std::vector<double>(0));
 
-void print_matrix(double **mat);
+
+void print_matrix(std::vector<std::vector<double> > mat);
 void serial_version();
 void compute_interval(int start, int interval);
 void multiplyMatrix(int rank, int size);
@@ -35,20 +39,21 @@ void read_in_matrices() {
   ifstream f("Matrix.txt");
   f >> N;
   // Allocate memory
-  A = new double *[N];
+  A.resize(N);
   for (int i = 0; i < N; ++i)
-    A[i] = new double[N];
-  B = new double *[N];
+    A[i].resize(N);
+  B.resize(N);
   for (int i = 0; i < N; ++i)
-    B[i] = new double[N];
-  AB = new double *[N];
+    B[i].resize(N);
+  AB.resize(N);
   for (int i = 0; i < N; ++i)
-    AB[i] = new double[N];
-  AB_serial = new double *[N];
+    AB[i].resize(N);
+  AB_serial.resize(N);
   for (int i = 0; i < N; ++i)
-    AB_serial[i] = new double[N];
-
+    AB_serial[i].resize(N);
   // Fill Matricies
+
+
   for (int i = 0; i < N; i++)
     for (int j = 0; j < N; j++)
       f >> A[i][j];
@@ -61,7 +66,7 @@ void read_in_matrices() {
 }
 
 //Function to print matrix
-void print_matrix(double **mat) {
+void print_matrix(std::vector<std::vector<double> >mat) {
   for (int i = 0; i < N; i++){
     for (int j = 0; j<N; j++){
       cout << mat[i][j] << " ";
@@ -103,6 +108,17 @@ void multiplyMatrix(int rank, int size){
     read_in_matrices();
   }
   MPI_Bcast(&N, 1, MPI_INT, 0, MCW);
+  if(rank) {
+    A.resize(N);
+    for (int i = 0; i < N; ++i)
+      A[i].resize(N);
+    B.resize(N);
+    for (int i = 0; i < N; ++i)
+      B[i].resize(N);
+    AB.resize(N);
+    for (int i = 0; i < N; ++i)
+      AB[i].resize(N);
+  }
   // Record start time
   MPI_Barrier(MCW);
   time1 = MPI_Wtime();
@@ -117,25 +133,47 @@ void multiplyMatrix(int rank, int size){
   }
 
   //Broadcast Matrix B and scatter relevant portions of Matrix A
-  print_matrix(A);
-  MPI_Bcast(B,N*N,MPI_DOUBLE,0,MCW);
-  MPI_Scatter(A, interval * N, MPI_DOUBLE, &A[rank * interval], interval * N,
-              MPI_DOUBLE, 0, MCW);
+  std::vector<double> tmpB = std::vector<double>(N*N);
+
+  tmpB = Serialize_Deserialize_Vector::Serialize(B);
+  MPI_Bcast(&tmpB[0],N*N,MPI_DOUBLE,0,MCW);
+  if(rank)
+    B=Serialize_Deserialize_Vector::Deserialize(tmpB);
+  //print_matrix(B);
+  std::vector<double> tmpA = std::vector<double>(N*N);
+  tmpA = Serialize_Deserialize_Vector::Serialize(A);
+  MPI_Bcast(&tmpA[0], N*N, MPI_DOUBLE, 0, MCW);
+//  MPI_Scatter(&tmpA[0], interval * N, MPI_DOUBLE, &tmpA[rank * interval], interval * N,
+//              MPI_DOUBLE, 0, MCW);
+  if(rank)
+    A=Serialize_Deserialize_Vector::Deserialize(tmpA);
+  //print_matrix(A);
 
   //Each processor cumputes the interval they are responsible for
   compute_interval(rank*interval,interval);
 
   //Gather results
-  MPI_Gather(AB[rank * interval], interval * N, MPI_DOUBLE, &AB[0][0],
+  auto tmp_AB = Serialize_Deserialize_Vector::Serialize(AB);
+//  cout << "RANK: " << rank << " INTERVAL: "<< interval << " rank*N " << rank*N << " tmp_AB.size() "<<tmp_AB.size() << " " ;
+//  std::vector<double> tmp(interval*N);
+//  for(int i = (rank * interval*N),j=0; i < (rank * interval*N)+N; i++, j++){
+//    tmp[j]=tmp_AB[i];
+//    cout << tmp[j]<<" ";
+//  }
+//  cout << endl;
+//  std::vector<double> test(N*N);
+  MPI_Gather(&tmp_AB[rank * interval*N], interval * N, MPI_DOUBLE, &tmp_AB[rank*interval*N],
              interval * N, MPI_DOUBLE, 0, MCW);
-
+  AB=Serialize_Deserialize_Vector::Deserialize(tmp_AB);
+  if(!rank)
+    print_matrix(AB);
   //Record parallel finish time
   MPI_Barrier(MCW);
 
   time2 = MPI_Wtime();
 
   if (!rank){
-
+    cout << "made it here!!" <<endl;
     //serial computation
     serial_version();
 

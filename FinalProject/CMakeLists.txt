@@ -9,7 +9,7 @@ add_definitions(-DOMPI_SKIP_MPICXX)
 set(HEADER_FILES
         )
 set(SOURCE_FILES
-        )
+        Serialize_Deserialize_Vector.h)
 
 add_executable(HW10 ${HEADER_FILES} ${SOURCE_FILES} main.cpp)
 set_property(TARGET HW10 PROPERTY CXX_STANDARD 11)
