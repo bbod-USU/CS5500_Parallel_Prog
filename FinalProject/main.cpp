@@ -9,22 +9,12 @@
 
 using namespace std;
 
-struct Matrix{
-  int M, N;
-  double** matrix;
-};
-
 //Problem size
-const int N = 10;
-vector<Matrix> matricies;
+int N;
 //global variables
-double A[N][N];
-double B[N][N];
-double AB[N][N];
-double AB_serial[N][N];
+double **A, **B, **AB, **AB_serial;
 
-void fill_matrices();
-void print_matrix(double mat[][N]);
+void print_matrix(double **mat);
 void serial_version();
 void compute_interval(int start, int interval);
 void multiplyMatrix(int rank, int size);
@@ -38,41 +28,40 @@ int main(int argc, char** argv){
   MPI_Comm_rank(MCW, &rank);
   MPI_Comm_size(MCW, &size);
   multiplyMatrix(rank, size);
-  if(!rank)
-    read_in_matrices();
   MPI_Finalize();
 }
 
+void read_in_matrices() {
+  ifstream f("Matrix.txt");
+  f >> N;
+  // Allocate memory
+  A = new double *[N];
+  for (int i = 0; i < N; ++i)
+    A[i] = new double[N];
+  B = new double *[N];
+  for (int i = 0; i < N; ++i)
+    B[i] = new double[N];
+  AB = new double *[N];
+  for (int i = 0; i < N; ++i)
+    AB[i] = new double[N];
+  AB_serial = new double *[N];
+  for (int i = 0; i < N; ++i)
+    AB_serial[i] = new double[N];
 
-void read_in_matrices(){
-  for(int i = 0; i < 2; i++) {
-    Matrix* matrix = new Matrix;
-    ifstream f("Matrix.txt");
-    f >> matrix->M >> matrix->N;
-    // Allocate memory
-    matrix->matrix = new double *[matrix->M];
-    for (int i = 0; i < matrix->M; ++i)
-      matrix->matrix[i] = new double[N];
-
-    for (int i = 0; i < matrix->M; i++)
-      for (int j = 0; j < matrix->N; j++)
-        f >> matrix->matrix[i][j];
-    matricies.push_back(*matrix);
-  }
+  // Fill Matricies
+  for (int i = 0; i < N; i++)
+    for (int j = 0; j < N; j++)
+      f >> A[i][j];
+  for (int i = 0; i < N; i++)
+    for (int j = 0; j < N; j++)
+      f >> B[i][j];
+  for (int i = 0; i < N; i++)
+    for (int j = 0; j < N; j++)
+      AB[i][j] = 0;
 }
-//Function to fill matrices at random
-void fill_matrices(){
-  srand(time(NULL));
 
-  for(int i = 0; i <N; i++){
-    for (int j = 0; j < N; j++){
-      A[i][j] = rand() %4;
-      B[i][j] = rand() %4;
-    }
-  }
-}
 //Function to print matrix
-void print_matrix(double mat[][N]){
+void print_matrix(double **mat) {
   for (int i = 0; i < N; i++){
     for (int j = 0; j<N; j++){
       cout << mat[i][j] << " ";
@@ -81,7 +70,7 @@ void print_matrix(double mat[][N]){
   }
   cout << endl;
 }
-//Serial version of solution
+// Serial multiplication works.
 void serial_version(){
   for (int i = 0; i <N; i++){
     for (int j = 0; j < N;j++){
@@ -108,27 +97,37 @@ void multiplyMatrix(int rank, int size){
   double time1,time2,time3;
   //compute interval size
   //rank 0 responsible for remainder
-  int interval = N/size;
-  int remainder = N%size;
-  //Record start time
-  MPI_Barrier(MCW);
-  time1 = MPI_Wtime();
 
   //Rank 0 fills the matrices and computes the remainder
   if(!rank){
-    fill_matrices();
-    compute_interval(size*interval,remainder);
+    read_in_matrices();
+  }
+  MPI_Bcast(&N, 1, MPI_INT, 0, MCW);
+  // Record start time
+  MPI_Barrier(MCW);
+  time1 = MPI_Wtime();
+
+  int interval = N / size;
+  int remainder = N % size;
+  MPI_Bcast(&interval, 1, MPI_INT, 0, MCW);
+  MPI_Bcast(&remainder, 1, MPI_INT, 0, MCW);
+
+  if (!rank) {
+    compute_interval(size * interval, remainder);
   }
 
   //Broadcast Matrix B and scatter relevant portions of Matrix A
+  print_matrix(A);
   MPI_Bcast(B,N*N,MPI_DOUBLE,0,MCW);
-  MPI_Scatter(A,interval*N,MPI_DOUBLE,A[rank*interval],interval*N,MPI_DOUBLE,0,MCW);
+  MPI_Scatter(A, interval * N, MPI_DOUBLE, &A[rank * interval], interval * N,
+              MPI_DOUBLE, 0, MCW);
 
   //Each processor cumputes the interval they are responsible for
   compute_interval(rank*interval,interval);
 
   //Gather results
-  MPI_Gather(AB[rank*interval],interval*N,MPI_DOUBLE,AB,interval*N,MPI_DOUBLE,0,MCW);
+  MPI_Gather(AB[rank * interval], interval * N, MPI_DOUBLE, &AB[0][0],
+             interval * N, MPI_DOUBLE, 0, MCW);
 
   //Record parallel finish time
   MPI_Barrier(MCW);
@@ -155,9 +154,9 @@ void multiplyMatrix(int rank, int size){
     print_matrix(A);
     cout << "multiplied Matrix B:" << endl;
     print_matrix(B);
-    cout << "gives matrix AB:" << endl;
-    print_matrix(AB);
     cout << "serial version gives:" << endl;
     print_matrix(AB_serial);
+    cout << "gives matrix AB:" << endl;
+    print_matrix(AB);
   }
 }
