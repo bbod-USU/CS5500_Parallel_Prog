@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ClangFormat
-
-# Build rule for target.
-ClangFormat: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ClangFormat
-.PHONY : ClangFormat
-
-# fast build rule for target.
-ClangFormat/fast:
-	$(MAKE) -f CMakeFiles/ClangFormat.dir/build.make CMakeFiles/ClangFormat.dir/build
-.PHONY : ClangFormat/fast
-
-#=============================================================================
 # Target rules for targets named HW10
 
 # Build rule for target.
@@ -171,7 +158,6 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ClangFormat"
 	@echo "... HW10"
 	@echo "... main.o"
 	@echo "... main.i"

@@ -5,7 +5,7 @@
 		<Option title="FinalProject"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\usr\local\lib\cmake\nlohmann_json\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug"/>
@@ -37,16 +37,6 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="ClangFormat">
-				<Option working_dir="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 ClangFormat"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="HW10">
 				<Option output="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug/HW10" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/cmake-build-debug"/>
@@ -56,8 +46,8 @@
 				<Compiler>
 					<Add option="-DOMPI_SKIP_MPICXX"/>
 					<Add directory="/usr/local/Cellar/open-mpi/4.0.2/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
@@ -79,8 +69,8 @@
 				<Compiler>
 					<Add option="-DOMPI_SKIP_MPICXX"/>
 					<Add directory="/usr/local/Cellar/open-mpi/4.0.2/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
@@ -99,6 +89,15 @@
 		</Unit>
 		<Unit filename="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/../../../../../usr/local/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/../../../../../usr/local/lib/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\nlohmann_json\"/>
+		</Unit>
+		<Unit filename="/Users/bradybodily/Repositories/CS5500_Parallel_Programming/FinalProject/../../../../../usr/local/lib/cmake/nlohmann_json/nlohmann_jsonTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\cmake\nlohmann_json\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

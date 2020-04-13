@@ -15,9 +15,6 @@
 ########################
 
 //Path to a program.
-CLANG_FORMAT:FILEPATH=/usr/local/bin/clang-format
-
-//Path to a program.
 CMAKE_AR:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
@@ -289,6 +286,9 @@ MPI_mpi_LIBRARY:FILEPATH=/usr/local/Cellar/open-mpi/4.0.2/lib/libmpi.dylib
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
 
+//The directory containing a CMake configuration file for nlohmann_json.
+nlohmann_json_DIR:PATH=/usr/local/lib/cmake/nlohmann_json
+
 
 ########################
 # INTERNAL cache entries
@@ -435,6 +435,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_MPI:INTERNAL=[TRUE][TRUE][c ][v3.1()]
 FIND_PACKAGE_MESSAGE_DETAILS_MPI_C:INTERNAL=[/usr/local/Cellar/open-mpi/4.0.2/lib/libmpi.dylib][mpi][/usr/local/Cellar/open-mpi/4.0.2/include][TRUE][v3.1()]
 //Details about finding MPI_CXX
 FIND_PACKAGE_MESSAGE_DETAILS_MPI_CXX:INTERNAL=[/usr/local/Cellar/open-mpi/4.0.2/lib/libmpi.dylib][mpi][/usr/local/Cellar/open-mpi/4.0.2/include][TRUE][v3.1()]
+//Details about finding nlohmann_json
+FIND_PACKAGE_MESSAGE_DETAILS_nlohmann_json:INTERNAL=[/usr/local/lib/cmake/nlohmann_json/nlohmann_jsonConfig.cmake][v3.7.3(3.2.0)]
 //ADVANCED property for variable: MPIEXEC_EXECUTABLE
 MPIEXEC_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: MPIEXEC_MAX_NUMPROCS
