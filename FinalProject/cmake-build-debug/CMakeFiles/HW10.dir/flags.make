@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sd
 
 CXX_DEFINES = -DOMPI_SKIP_MPICXX
 
-CXX_INCLUDES = -isystem /usr/local/Cellar/open-mpi/4.0.2/include -isystem /usr/local/include 
+CXX_INCLUDES = -isystem /usr/local/Cellar/open-mpi/4.0.2/include 
 

@@ -16,7 +16,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/Cellar/open-mpi/4.0.2/include"
-  "/usr/local/include"
   )
 
 # Targets to which this target links.
