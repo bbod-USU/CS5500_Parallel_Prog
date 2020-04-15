@@ -17,9 +17,9 @@ std::vector<std::vector<double> > AB_serial = std::vector<std::vector<double> >(
 
 
 void print_matrix(std::vector<std::vector<double> > mat);
-void serial_version();
+void serial_matrix_multiplication();
 void compute_interval(int start, int interval);
-void multiplyMatrix(int rank, int size);
+void parallel_matrix_multiplication(int rank, int size);
 void read_in_matrices();
 void print_help();
 void determinant();
@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
     MPI_Barrier(MCW);
     MPI_Bcast(&user_input, 1, MPI_INT, 0, MCW );
     if (user_input == '1')
-      multiplyMatrix(rank, size);
+      parallel_matrix_multiplication(rank, size);
     else if (user_input == '2'){
       if(!rank)
         reduced_row();
@@ -186,7 +186,7 @@ void print_matrix(std::vector<std::vector<double> >mat) {
   myfile << endl;
   cout << endl;
 }
-void serial_version(){
+void serial_matrix_multiplication(){
   for (int i = 0; i <N; i++){
     for (int j = 0; j < N;j++){
       AB_serial[i][j] = 0;
@@ -206,7 +206,7 @@ void compute_interval(int start,int interval){
     }
   }
 }
-void multiplyMatrix(int rank, int size){
+void parallel_matrix_multiplication(int rank, int size){
   double time1,time2,time3;
   if(!rank){
     read_in_matrices();
@@ -229,7 +229,6 @@ void multiplyMatrix(int rank, int size){
   int remainder = N % size;
   MPI_Bcast(&interval, 1, MPI_INT, 0, MCW);
   MPI_Bcast(&remainder, 1, MPI_INT, 0, MCW);
-  // Record start time
   MPI_Barrier(MCW);
   time1 = MPI_Wtime();
   if (!rank) {
@@ -259,23 +258,23 @@ void multiplyMatrix(int rank, int size){
   time2 = MPI_Wtime();
 
   if (!rank){
-    serial_version();
+    serial_matrix_multiplication();
     time3 = MPI_Wtime();
-    cout << size << " processors computed in time: " << time2-time1 << endl;
-    cout << "Serial version computed in time: " << time3-time2 << endl;
+    cout << size << " processors completed in: " << time2-time1 << " seconds"<<endl;
+    cout << "Serial version completed in: " << time3-time2 << " seconds"<<endl;
     cout << "Matrix A: " << endl;
-    myfile << size << " processors computed in time: " << time2-time1 << endl;
-    myfile << "Serial version computed in time: " << time3-time2 << endl;
+    myfile << size << " processors completed in: " << time2-time1 << " seconds"<<endl;
+    myfile << "Serial version completed in: " << time3-time2 << " seconds"<<endl;
     myfile << "Matrix A: " << endl;
     print_matrix(A);
-    cout << "multiplied Matrix B:" << endl;
-    myfile << "multiplied Matrix B:" << endl;
+    cout << "Matrix B:" << endl;
+    myfile << "Matrix B:" << endl;
     print_matrix(B);
-    cout << "serial version gives:" << endl;
-    myfile << "serial version gives:" << endl;
+    cout << "serial version AB:" << endl;
+    myfile << "serial version AB:" << endl;
     print_matrix(AB_serial);
-    cout << "gives matrix AB:" << endl;
-    myfile << "gives matrix AB:" << endl;
+    cout << "parallel matrix AB:" << endl;
+    myfile << "parallel matrix AB:" << endl;
     print_matrix(AB);
 
   }
